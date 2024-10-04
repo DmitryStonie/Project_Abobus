@@ -3,7 +3,7 @@
     image: hrdirectorwebapp
     build:
       context: .
-      dockerfile: HRDirectorWebApp/Dockerfile
+      dockerfile: HRDirectorWebApp/HRDirectorWebApp/Dockerfile
     ports:
       - "8002:8080"
 
@@ -11,7 +11,7 @@
     image: hrmanagerwebapp
     build:
       context: .
-      dockerfile: HRManagerWebApp/Dockerfile
+      dockerfile: HRManagerWebApp/HRManagerWebApp/Dockerfile
     environment:
       HR_DIRECTOR_IP: "http://hrdirectorwebapp:8080"
       EMPLOYEES_COUNT: "10"
@@ -22,7 +22,7 @@
     image: juniorwebapp
     build:
       context: .
-      dockerfile: JuniorWebApp/Dockerfile
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
     environment:
       NAME: "Юдин Адам"
       ID: 1
@@ -32,7 +32,7 @@
     image: juniorwebapp
     build:
       context: .
-      dockerfile: JuniorWebApp/Dockerfile
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
     environment:
       NAME: "Яшина Яна"
       ID: 2
@@ -42,7 +42,7 @@
     image: juniorwebapp
     build:
       context: .
-      dockerfile: JuniorWebApp/Dockerfile
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
     environment:
       NAME: "Никитина Вероника"
       ID: 3
@@ -52,7 +52,7 @@
     image: juniorwebapp
     build:
       context: .
-      dockerfile: JuniorWebApp/Dockerfile
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
     environment:
       NAME: "Рябинин Александр"
       ID: 4
@@ -62,7 +62,7 @@
     image: juniorwebapp
     build:
       context: .
-      dockerfile: JuniorWebApp/Dockerfile
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
     environment:
       NAME: "Ильин Тимофей"
       ID: 5
@@ -72,7 +72,7 @@
     image: teamleadwebapp
     build:
       context: .
-      dockerfile: TeamLeadWebApp/Dockerfile
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
     environment:
       NAME: "Филиппова Ульяна"
       ID: 1
@@ -82,7 +82,7 @@
     image: teamleadwebapp
     build:
       context: .
-      dockerfile: TeamLeadWebApp/Dockerfile
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
     environment:
       NAME: "Николаев Григорий"
       ID: 2
@@ -92,7 +92,7 @@
     image: teamleadwebapp
     build:
       context: .
-      dockerfile: TeamLeadWebApp/Dockerfile
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
     environment:
       NAME: "Андреева Вероника"
       ID: 3
@@ -102,7 +102,7 @@
     image: teamleadwebapp
     build:
       context: .
-      dockerfile: TeamLeadWebApp/Dockerfile
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
     environment:
       NAME: "Коротков Михаил"
       ID: 4
@@ -112,7 +112,7 @@
     image: teamleadwebapp
     build:
       context: .
-      dockerfile: TeamLeadWebApp/Dockerfile
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
     environment:
       NAME: "Кузнецов Александр"
       ID: 5

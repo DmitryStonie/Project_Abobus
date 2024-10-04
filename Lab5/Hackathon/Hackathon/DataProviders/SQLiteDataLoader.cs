@@ -26,9 +26,20 @@ public class SQLiteDataLoader(ApplicationContext context) : IDataLoadingInterfac
             harmonicMean = hackathon.HarmonicMean;
             var teamsQuery = context.Teams.Where(t => t.HackathonId == hackathon.Id);
             teams = teamsQuery.ToList();
-            var juniorsDict = teamsQuery
+            var gay = context.Teams;
+            foreach (var junior in gay)
+            {
+                Console.WriteLine(junior.HackathonId.ToString() +"\t" + junior.Id + "\t" + junior.JuniorId);
+            }
+            
+            var juniors = teamsQuery
                 .Join(context.Juniors, team => team.JuniorId, junior => junior.Id,
-                    (team, junior) => new { junior }).ToDictionary(x => x.junior.Id, x => x.junior);
+                    (team, junior) => new { junior });
+            foreach (var junior in juniors)
+            {
+                Console.WriteLine(junior);
+            }
+            var juniorsDict = juniors.ToDictionary(x => x.junior.Id, x => x.junior);
             var teamLeadsDict = teamsQuery
                 .Join(context.Teamleads, team => team.TeamLeadId, teamLead => teamLead.Id,
                     (team, teamLead) => new { teamLead }).ToDictionary(x => x.teamLead.Id, x => x.teamLead);

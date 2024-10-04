@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "VNtbHkZzcug=",
-  "success": false,
+  "dgSpecHash": "1ozAhZYEPHY=",
+  "success": true,
   "projectFilePath": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\HRDirectorWebApp\\HRDirectorWebApp\\HRDirectorWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dmitry\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
@@ -55,15 +55,5 @@
     "C:\\Users\\Dmitry\\.nuget\\packages\\system.text.encodings.web\\9.0.0-rc.1.24431.7\\system.text.encodings.web.9.0.0-rc.1.24431.7.nupkg.sha512",
     "C:\\Users\\Dmitry\\.nuget\\packages\\system.text.json\\9.0.0-rc.1.24431.7\\system.text.json.9.0.0-rc.1.24431.7.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\HRDirectorWebApp\\Hackathon\\Hackathon.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\HRDirectorWebApp\\Hackathon\\Hackathon.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

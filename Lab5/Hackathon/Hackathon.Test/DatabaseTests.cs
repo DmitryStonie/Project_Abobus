@@ -1,32 +1,19 @@
-﻿using Hackathon;
-using Hackathon.Database.SQLite;
+﻿using Hackathon.Database.SQLite;
 using Hackathon.DataProviders;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Configuration;
-using IConfiguration = Castle.Core.Configuration.IConfiguration;
-
 namespace Hackathon.Test;
 
 public class DatabaseTests
 {
-    private AddDbContextFactory _addDbContextFactory;
     const double HarmonicMean = 10;
     const int HackathonId = 1;
-
-    [SetUp]
-    public void SetUp()
-    {
-        var options = new DbContextOptionsBuilder<ApplicationContext>()
-            .UseSqlite("DataSource=file::memory:?cache=shared").Options;
-        _addDbContextFactory = new AddDbContextFactory(options);
-    }
+    private static int testId = 1;
 
     [Test]
     public void WriteHackathonTest_ShouldWriteHackathonData()
     {
         //Arrange
-        var context = _addDbContextFactory.CreateDbContext();
+        var context = createContext();
         var dataSaver = new SQLiteDataSaver(context);
         var hackathon = new Hackathon(HarmonicMean, HackathonId);
         InitTestData(out var juniors, out var teamLeads, out var teams, HackathonId);
@@ -38,7 +25,7 @@ public class DatabaseTests
     public void MultipleWriteHackathonTest_ShouldWriteMultipleHackathonData()
     {
         //Arrange
-        var context = _addDbContextFactory.CreateDbContext();
+        var context = createContext();
         var dataSaver = new SQLiteDataSaver(context);
         var hackathon = new Hackathon(HarmonicMean, HackathonId);
         InitTestData(out var juniors, out var teamLeads, out var teams, HackathonId);
@@ -52,16 +39,16 @@ public class DatabaseTests
     public void ReadHackathonTest_ShouldReadHackathonData()
     {
         //Assert
-        var context = _addDbContextFactory.CreateDbContext();
+        var context = createContext();
         var dataSaver = new SQLiteDataSaver(context);
         var dataLoader = new SQLiteDataLoader(context);
         const double harmonic = 10;
-        const int hackathonId = 1;
+        const int hackathonId = 100;
         var hackathon = new Hackathon(harmonic, hackathonId);
         InitTestData(out var juniors, out var teamLeads, out var teamsToUpload, hackathonId);
         //Act
         dataSaver.SaveData(juniors, teamLeads, teamsToUpload, hackathon);
-        dataLoader.LoadHackathon(1, out var loadedEmployees, out var loadedTeams, out var harmonicMean);
+        dataLoader.LoadHackathon(hackathonId, out var loadedEmployees, out var loadedTeams, out var harmonicMean);
         //Assert
         Assert.That(harmonicMean, Is.EqualTo(harmonic), "Harmonic mean is not the same!");
         var employees = new Dictionary<int, Employee>();
@@ -71,11 +58,11 @@ public class DatabaseTests
         loadedEmployees.ForEach(e => loadedEmployeesDict.Add(e.Id, e));
         foreach (var (id, emp) in employees)
         {
-            Assert.That(loadedEmployeesDict.ContainsKey(id), Is.EqualTo(true),
+            Assert.AreEqual(true, loadedEmployeesDict.ContainsKey(id),
                 $"Employee with id {id} does not exist!");
-            Assert.That(emp.Id, Is.EqualTo(loadedEmployeesDict[id].Id),
+            Assert.AreEqual(emp.Id, loadedEmployeesDict[id].Id,
                 $"Id of loaded employee is not the same! Expected: {emp.Id}, got: {loadedEmployeesDict[id].Id}");
-            Assert.That(emp.Name, Is.EqualTo(loadedEmployeesDict[id].Name),
+            Assert.AreEqual(emp.Name, loadedEmployeesDict[id].Name,
                 $"Name of loaded employee is not the same! Expected: {emp.Name}, got: {loadedEmployeesDict[id].Name}");
         }
 
@@ -83,13 +70,13 @@ public class DatabaseTests
         loadedTeams.ForEach(t => teamsLoadedDict.Add(t.Id, t));
         foreach (var team in teamsToUpload)
         {
-            Assert.That(teamsLoadedDict.ContainsKey(team.Id), Is.EqualTo(true),
+            Assert.AreEqual(true, teamsLoadedDict.ContainsKey(team.Id),
                 $"Team with id {team.Id} does not exist!");
-            Assert.That(team.HackathonId, Is.EqualTo(teamsLoadedDict[team.Id].HackathonId),
+            Assert.AreEqual(team.HackathonId, teamsLoadedDict[team.Id].HackathonId,
                 $"HackathonId of loaded team is not the same! Expected: {team.HackathonId}, got: {teamsLoadedDict[team.Id].HackathonId}");
-            Assert.That(team.TeamLeadId, Is.EqualTo(teamsLoadedDict[team.Id].TeamLeadId),
+            Assert.AreEqual(team.TeamLeadId, teamsLoadedDict[team.Id].TeamLeadId,
                 $"TeamLeadId of loaded team is not the same! Expected: {team.TeamLeadId}, got: {teamsLoadedDict[team.Id].TeamLeadId}");
-            Assert.That(team.JuniorId, Is.EqualTo(teamsLoadedDict[team.Id].JuniorId),
+            Assert.AreEqual(team.JuniorId, teamsLoadedDict[team.Id].JuniorId,
                 $"JuniorId of loaded team is not the same! Expected: {team.JuniorId}, got: {teamsLoadedDict[team.Id].JuniorId}");
         }
     }
@@ -98,7 +85,7 @@ public class DatabaseTests
     public void GetArithmeticMeanTest_ShouldReadArithmeticMeanAndInShouldBeCorrect()
     {
         //Arrange
-        var context = _addDbContextFactory.CreateDbContext();
+        var context = createContext();
         var dataSaver = new SQLiteDataSaver(context);
         var dataLoader = new SQLiteDataLoader(context);
         int iterations = 10;
@@ -149,5 +136,14 @@ public class DatabaseTests
             var team = new Team(juniors[i], teamLeads[i]);
             teams.Add(team);
         }
+    }
+
+    private static ApplicationContext createContext()
+    {
+        var options = new DbContextOptionsBuilder<ApplicationContext>()
+            .UseSqlite("DataSource=file::memory:?cache=shared").Options;
+        testId += 1;
+        var addDbContextFactory = new AddDbContextFactory(options);
+        return addDbContextFactory.CreateDbContext();
     }
 }

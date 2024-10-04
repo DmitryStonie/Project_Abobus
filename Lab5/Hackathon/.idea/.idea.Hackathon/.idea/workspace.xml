@@ -7,11 +7,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78e60518-15a8-419c-86db-585615a3227c" name="Changes" comment="" />
+    <list default="true" id="78e60518-15a8-419c-86db-585615a3227c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Hackathon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hackathon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/DatabaseTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/DatabaseTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.Test.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.Test.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.Test.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.Test.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/bin/Debug/net8.0/Hackathon.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/ref/Hackathon.Test.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/ref/Hackathon.Test.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/refint/Hackathon.Test.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/obj/Debug/net8.0/refint/Hackathon.Test.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.Test/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.Test/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/DataProviders/SQLiteDataLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/DataProviders/SQLiteDataLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/bin/Debug/net8.0/Hackathon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/bin/Debug/net8.0/Hackathon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/bin/Debug/net8.0/Hackathon.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/bin/Debug/net8.0/Hackathon.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/bin/Debug/net8.0/Hackathon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/bin/Debug/net8.0/Hackathon.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/bin/Debug/net8.0/hackathon.db" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/bin/Debug/net8.0/hackathon.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/Hackathon.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/ref/Hackathon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/ref/Hackathon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/refint/Hackathon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/obj/Debug/net8.0/refint/Hackathon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hackathon/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Hackathon/obj/rider.project.model.nuget.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -34,6 +69,18 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2c98ac4189b6d4c45630c6165b8e43b4feb4a6bbb658a343f5660cfbcd0e556/MethodWrapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/538e3b0f6405dc6d87f23e7f33756211ea334b874b2da9ad4acb273a48113/Reflect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7f57eabcbac458cf4626a4c98a761414f5ed3895280f4d415e5cf53cc2abf/SimpleWorkItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9eda537f15ea23cdfae523c19e87eb303a3ded88937ae7e55919387a43f70/ExecutionContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a7756272f4b12d2119643f9384554347766159637191d2dec50afca75322915/CompositeWorkItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bef935dbb8608c28a19b77b647713b45d6233995c443988e8154ae9ef3ddd3c/ContextUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c51a864e8438a181ed7952db6edbf1cddc97d42d1184147a1781b68be885441/DelegatingTestCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d056b4e3b34cd15e21dec611d5b5bbaf85e1f15b445f4e6b3e4dc6634d649042/WorkItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d882146b4f265f10bcbec2663fce248db9ffec5fa1aeaf76e32a11ba5eafcd6/MethodBaseInvoker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df6051f28c6c3f2ca0ddb6b26543d79632e5fa7a43a54a54eba91d4478568c0/SimpleWorkItemDispatcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f536671e825030c7f17fbf3f75511651c281f2429edc8fd6ea660418f825949/BeforeAndAfterTestCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fc423736d3854482b8e0d96af14ca889656672207d32f5f22759155cd2fea7/TestMethodCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Hackathon/Program.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -49,19 +96,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.Hackathon.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;lab5&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.Hackathon.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "b46565b8-5cf1-416d-97dc-7eedb039e504.executor": "Debug",
+    "git-widget-placeholder": "lab5",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.Hackathon">
     <configuration name="Hackathon" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -92,6 +140,8 @@
       <updated>1728016603405</updated>
       <workItem from="1728016605155" duration="346000" />
       <workItem from="1728017644642" duration="1710000" />
+      <workItem from="1728027586322" duration="297000" />
+      <workItem from="1728027904309" duration="4025000" />
     </task>
     <task id="LOCAL-00001" summary="Вынес хакатон и тесты к нему в отдельный solution">
       <option name="closed" value="true" />
@@ -101,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728019333986</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Добавил файлы">
+      <option name="closed" value="true" />
+      <created>1728027698574</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1728027698574</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +171,7 @@
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Вынес хакатон и тесты к нему в отдельный solution" />
-    <option name="LAST_COMMIT_MESSAGE" value="Вынес хакатон и тесты к нему в отдельный solution" />
+    <MESSAGE value="Добавил файлы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил файлы" />
   </component>
 </project>
