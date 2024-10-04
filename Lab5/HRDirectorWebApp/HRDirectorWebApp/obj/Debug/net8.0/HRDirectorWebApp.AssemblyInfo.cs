@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HRDirectorWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c6b0cf6fe6abad712f049c2150b1037df59c518")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99f00359f0a46a0de2dce03cde1cc37a2dbce414")]
 [assembly: System.Reflection.AssemblyProductAttribute("HRDirectorWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HRDirectorWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

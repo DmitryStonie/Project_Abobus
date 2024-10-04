@@ -1,4 +1,5 @@
-﻿using Hackathon.Database.SQLite;
+﻿using System;
+using Hackathon.Database.SQLite;
 using Hackathon.DataProviders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

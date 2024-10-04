@@ -1,4 +1,6 @@
-﻿namespace Hackathon;
+﻿using System;
+
+namespace Hackathon;
 
 public class EmptyFileException(string message) : Exception(message);
 
