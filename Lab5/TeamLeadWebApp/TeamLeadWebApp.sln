@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamLeadWebApp", "TeamLeadWebApp\TeamLeadWebApp.csproj", "{B4205C58-ED90-4CF4-912B-BBB39079851C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "..\Hackathon\Hackathon\Hackathon.csproj", "{46116FAF-E382-409D-B2DD-7D3FB7A38B65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{B4205C58-ED90-4CF4-912B-BBB39079851C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4205C58-ED90-4CF4-912B-BBB39079851C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4205C58-ED90-4CF4-912B-BBB39079851C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46116FAF-E382-409D-B2DD-7D3FB7A38B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46116FAF-E382-409D-B2DD-7D3FB7A38B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46116FAF-E382-409D-B2DD-7D3FB7A38B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46116FAF-E382-409D-B2DD-7D3FB7A38B65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
