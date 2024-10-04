@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["HRManagerWebApp/HRManagerWebApp.csproj", "HRManagerWebApp/"]
-COPY ["Hackathon/Hackathon.csproj", "Hackathon/"]
+COPY ["../Hackathon/Hackathon/Hackathon.csproj", "../Hackathon/Hackathon/"]
 RUN dotnet restore "HRManagerWebApp/HRManagerWebApp.csproj"
 COPY . .
 WORKDIR "/src/HRManagerWebApp"

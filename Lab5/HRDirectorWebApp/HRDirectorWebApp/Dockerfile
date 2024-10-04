@@ -3,12 +3,11 @@ USER $APP_UID
 WORKDIR /app
 ENV DOTNET_URLS=http://+:5208
 
-
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["HRDirectorWebApp/HRDirectorWebApp.csproj", "HRDirectorWebApp/"]
-COPY ["Hackathon/Hackathon.csproj", "Hackathon/"]
+COPY ["../Hackathon/Hackathon/Hackathon.csproj", "../Hackathon/Hackathon/"]
 RUN dotnet restore "HRDirectorWebApp/HRDirectorWebApp.csproj"
 COPY . .
 WORKDIR "/src/HRDirectorWebApp"
