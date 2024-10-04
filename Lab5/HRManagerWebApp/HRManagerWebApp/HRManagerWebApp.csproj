@@ -5,11 +5,11 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Hackathon\Hackathon\Hackathon.csproj" />
-      <ProjectReference Include="..\Hackathon\Hackathon.csproj" />
     </ItemGroup>
 
     <ItemGroup>

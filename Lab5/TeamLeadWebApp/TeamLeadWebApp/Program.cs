@@ -18,7 +18,7 @@ public class Program
                 configuration.Sources.Clear();
                 configuration.AddJsonFile("appsettings.json", optional: true);
                 configuration.AddEnvironmentVariables();
-            }).ConfigureServices((services) =>
+            }).ConfigureServices((context, services) =>
             {
                 services.AddHostedService<TeamLeadService>();
                 services.AddTransient<IDataLoadingInterface, CsvDataLoader>();

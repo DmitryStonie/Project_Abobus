@@ -24,7 +24,9 @@
     <ItemGroup>
       <None Remove="appsettings.json" />
       <Content Include="appsettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>Never</CopyToPublishDirectory>
       </Content>
       <None Remove="Resources\Juniors20.csv" />
       <Content Include="Resources\Juniors20.csv">

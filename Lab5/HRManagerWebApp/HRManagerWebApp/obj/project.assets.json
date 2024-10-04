@@ -2458,7 +2458,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\HRManagerWebApp\\Hackathon\\Hackathon.csproj",
       "Hackathon >= 1.0.0",
       "Newtonsoft.Json >= 13.0.3"
     ]
@@ -2490,9 +2489,6 @@
           "projectReferences": {
             "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\Hackathon\\Hackathon\\Hackathon.csproj": {
               "projectPath": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\Hackathon\\Hackathon\\Hackathon.csproj"
-            },
-            "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\HRManagerWebApp\\Hackathon\\Hackathon.csproj": {
-              "projectPath": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\HRManagerWebApp\\Hackathon\\Hackathon.csproj"
             }
           }
         }
@@ -2539,16 +2535,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\HRManagerWebApp\\Hackathon\\Hackathon.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\HRManagerWebApp\\Hackathon\\Hackathon.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

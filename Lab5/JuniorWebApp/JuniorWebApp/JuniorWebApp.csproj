@@ -6,11 +6,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>JuniorsWebApp</RootNamespace>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Hackathon\Hackathon\Hackathon.csproj" />
-      <ProjectReference Include="..\Hackathon\Hackathon.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,7 +29,10 @@
 
     <ItemGroup>
       <None Update="Resourses\Teamleads5.csv">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Resources\Teamleads5.csv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 

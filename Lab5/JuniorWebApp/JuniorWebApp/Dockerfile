@@ -6,11 +6,11 @@ EXPOSE 5194
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["JuniorWebApp/JuniorWebApp.csproj", "JuniorWebApp/"]
-COPY ["../Hackathon/Hackathon/Hackathon.csproj", "../Hackathon/Hackathon/"]
-RUN dotnet restore "JuniorWebApp/JuniorWebApp.csproj"
+COPY ["JuniorWebApp/JuniorWebApp/JuniorWebApp.csproj", "JuniorWebApp/JuniorWebApp/"]
+COPY ["Hackathon/Hackathon/Hackathon.csproj", "Hackathon/Hackathon/"]
+RUN dotnet restore "JuniorWebApp/JuniorWebApp/JuniorWebApp.csproj"
 COPY . .
-WORKDIR "/src/JuniorWebApp"
+WORKDIR "/src/JuniorWebApp/JuniorWebApp"
 RUN dotnet build "JuniorWebApp.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

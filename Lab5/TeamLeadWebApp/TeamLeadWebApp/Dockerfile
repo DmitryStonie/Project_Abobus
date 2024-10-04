@@ -5,11 +5,11 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["TeamLeadWebApp/TeamLeadWebApp.csproj", "TeamLeadWebApp/"]
-COPY ["../Hackathon/Hackathon/Hackathon.csproj", "../Hackathon/Hackathon/"]
-RUN dotnet restore "TeamLeadWebApp/TeamLeadWebApp.csproj"
+COPY ["TeamLeadWebApp/TeamLeadWebApp/TeamLeadWebApp.csproj", "TeamLeadWebApp/TeamLeadWebApp/"]
+COPY ["Hackathon/Hackathon/Hackathon.csproj", "Hackathon/Hackathon/"]
+RUN dotnet restore "TeamLeadWebApp/TeamLeadWebApp/TeamLeadWebApp.csproj"
 COPY . .
-WORKDIR "/src/TeamLeadWebApp"
+WORKDIR "/src/TeamLeadWebApp/TeamLeadWebApp"
 RUN dotnet build "TeamLeadWebApp.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

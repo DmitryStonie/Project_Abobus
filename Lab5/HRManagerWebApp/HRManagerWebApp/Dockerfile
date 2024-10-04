@@ -6,11 +6,11 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["HRManagerWebApp/HRManagerWebApp.csproj", "HRManagerWebApp/"]
-COPY ["../Hackathon/Hackathon/Hackathon.csproj", "../Hackathon/Hackathon/"]
-RUN dotnet restore "HRManagerWebApp/HRManagerWebApp.csproj"
+COPY ["HRManagerWebApp/HRManagerWebApp/HRManagerWebApp.csproj", "HRManagerWebApp/HRManagerWebApp/"]
+COPY ["Hackathon/Hackathon/Hackathon.csproj", "Hackathon/Hackathon/"]
+RUN dotnet restore "HRManagerWebApp/HRManagerWebApp/HRManagerWebApp.csproj"
 COPY . .
-WORKDIR "/src/HRManagerWebApp"
+WORKDIR "/src/HRManagerWebApp/HRManagerWebApp"
 RUN dotnet build "HRManagerWebApp.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

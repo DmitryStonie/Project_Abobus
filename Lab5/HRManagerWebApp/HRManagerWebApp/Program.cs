@@ -62,6 +62,7 @@ public class Program
                     context.Response.StatusCode = 200;
                     if (AddTeamLead(teamLead))
                     {
+                        app.Logger.LogInformation(teamLead.ToString());
                         if ((Juniors.Count() + TeamLeads.Count()) ==
                             Int32.Parse(app.Configuration["EMPLOYEES_COUNT"]!) && Juniors.Count() == TeamLeads.Count())
                         {
@@ -115,7 +116,7 @@ public class Program
         return bodyStr;
     }
 
-    private static bool SendTeams(IEnumerable<Team> teams, string hrDirectorUri,
+    private static async Task<bool> SendTeams(IEnumerable<Team> teams, string hrDirectorUri,
         ILogger appLogger)
     {
         while (true)
@@ -125,14 +126,14 @@ public class Program
                 using HttpClient client = new HttpClient();
                 var json = JsonConvert.SerializeObject(teams);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = client.PostAsync(hrDirectorUri, content);
-                if (response.Result.IsSuccessStatusCode)
+                var response = await client.PostAsync(hrDirectorUri, content);
+                if (response.IsSuccessStatusCode)
                 {
                     appLogger.LogInformation("Teams successfully loaded!");
                     return true;
                 }
 
-                appLogger.LogInformation($"Got response {response.Result.StatusCode}");
+                appLogger.LogInformation($"Got response {response.StatusCode}");
             }
             catch (AggregateException ex)
             {

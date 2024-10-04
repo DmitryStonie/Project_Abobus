@@ -26,11 +26,8 @@ public class JuniorService(
         var junior = new Junior();
         try
         {
-            logger.LogInformation("Started");
             junior = new Junior(Int32.Parse(configuration["ID"]!), configuration["NAME"]);
-            logger.LogInformation("Startedaaa");
             teamLeads = dataLoader.LoadTeamLeads();
-            logger.LogInformation("Started");
         }
         catch (Exception ex)
         {

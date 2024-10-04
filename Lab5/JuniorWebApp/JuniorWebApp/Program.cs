@@ -21,7 +21,7 @@ public class Program
             }).ConfigureServices((context, services) =>
             {
                 services.AddHostedService<JuniorService>();
-                services.AddTransient<IDataLoadingInterface, CsvDataLoader>();
+                services.AddSingleton<IDataLoadingInterface, CsvDataLoader>(service => new CsvDataLoader(context.Configuration));
                 services.AddTransient<IWishListGenerator, RandomWishlistGenerator>();
             })
             .ConfigureLogging(logging =>

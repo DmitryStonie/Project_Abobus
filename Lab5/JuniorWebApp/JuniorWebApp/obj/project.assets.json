@@ -4783,7 +4783,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\JuniorWebApp\\Hackathon\\Hackathon.csproj",
       "Hackathon >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.0-rc.1.24451.1",
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.0-rc.1.24451.1",
@@ -4819,9 +4818,6 @@
           "projectReferences": {
             "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\Hackathon\\Hackathon\\Hackathon.csproj": {
               "projectPath": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\Hackathon\\Hackathon\\Hackathon.csproj"
-            },
-            "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\JuniorWebApp\\Hackathon\\Hackathon.csproj": {
-              "projectPath": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\JuniorWebApp\\Hackathon\\Hackathon.csproj"
             }
           }
         }
@@ -4888,16 +4884,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\JuniorWebApp\\Hackathon\\Hackathon.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\JuniorWebApp\\Hackathon\\Hackathon.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }
