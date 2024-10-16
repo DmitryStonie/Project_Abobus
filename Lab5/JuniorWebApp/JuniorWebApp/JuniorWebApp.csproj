@@ -11,9 +11,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Hackathon\Hackathon\Hackathon.csproj" />
+      <ProjectReference Include="..\..\MassTransitMessages\MassTransitMessages\MassTransitMessages.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="MassTransit" Version="8.2.6-develop.2031" />
+      <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
+      <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.6-develop.2031" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-rc.1.24451.1">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

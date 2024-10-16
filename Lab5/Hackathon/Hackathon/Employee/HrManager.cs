@@ -2,6 +2,8 @@
 {
     public class HrManager(List<Junior> juniors, List<TeamLead> teamLeads, ITeamBuildingStrategy teamBuildingStrategy)
     {
+        public List<Junior> Juniors = new List<Junior>();
+        public List<TeamLead> TeamLeads = new List<TeamLead>();
         private List<Wishlist> GetWishes(List<Employee> employees)
         {
             var wishes = new List<Wishlist>();

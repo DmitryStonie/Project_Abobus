@@ -1,8 +1,13 @@
+using System.Text;
 using Hackathon;
 using Hackathon.Database.SQLite;
 using Hackathon.DataProviders;
+using HRDirectorWebApp.MassTransit.Consumers;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace HRDirectorWebApp;
 
@@ -10,36 +15,39 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
-        builder.Configuration.AddJsonFile("appsettings.json");
-        builder.Services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")),
-            ServiceLifetime.Singleton);
-        builder.Services.AddTransient<IDataSavingInterface, SQLiteDataSaver>();
-        var app = builder.Build();
-        app.MapPost("/", async (context) =>
-        {
-            var bodyStr = await ReadJsonBody(context.Request);
-            var teams = JsonConvert.DeserializeObject<List<Team>>(bodyStr);
-            app.Logger.LogInformation("Got teams");
-            await context.Response.WriteAsync("Ok");
-            if (teams != null)
-            {
-                var hackathon = new Hackathon.Hackathon(teams, app.Services.GetRequiredService<IDataSavingInterface>());
-                hackathon.Complete();
-                var harmonicMean = hackathon.HarmonicMean;
-                Console.WriteLine($"Harmonic mean: {harmonicMean}");
-            }
-        });
-        app.Run();
+        Console.WriteLine("Program started");
+        CreateHostBuilder(args).Build().Run();
     }
-
-    private static async Task<String> ReadJsonBody(HttpRequest request)
+    
+    public static IHostBuilder CreateHostBuilder(params string[] args)
     {
-        request.EnableBuffering();
-        request.Body.Position = 0;
-        using var stream = new StreamReader(request.Body);
-        var bodyStr = await stream.ReadToEndAsync();
-        return bodyStr;
+        return Host.CreateDefaultBuilder(args).ConfigureAppConfiguration(configuration =>
+        {
+            configuration.Sources.Clear();
+            configuration.AddJsonFile("appsettings.json", optional: true);
+        }).ConfigureLogging(logging =>
+        {
+            logging.ClearProviders();
+            logging.AddConsole();
+        }).ConfigureServices((context, services) =>
+        {
+            services.AddHostedService<Worker>();
+            services.AddSingleton<HrDirector>(new HrDirector());
+            services.AddMassTransit(x =>
+            {
+                x.AddConsumer<GetJuniorWishlistConsumer>();
+                x.AddConsumer<GetTeamleadWishlistConsumer>();
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host("localhost", "/", h =>
+                    {
+                        h.Username("guest");
+                        h.Password("guest");
+                    });
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
+
+        });
     }
 }

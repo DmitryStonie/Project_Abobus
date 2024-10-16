@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuniorWebApp", "JuniorWebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "..\Hackathon\Hackathon\Hackathon.csproj", "{A2D520DF-79EF-4DED-B70F-D32B58F153D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransitMessages", "..\MassTransitMessages\MassTransitMessages\MassTransitMessages.csproj", "{ABDD3F99-DF14-4FBA-B2C9-C04CD545EC9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{A2D520DF-79EF-4DED-B70F-D32B58F153D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2D520DF-79EF-4DED-B70F-D32B58F153D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2D520DF-79EF-4DED-B70F-D32B58F153D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABDD3F99-DF14-4FBA-B2C9-C04CD545EC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABDD3F99-DF14-4FBA-B2C9-C04CD545EC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABDD3F99-DF14-4FBA-B2C9-C04CD545EC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABDD3F99-DF14-4FBA-B2C9-C04CD545EC9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

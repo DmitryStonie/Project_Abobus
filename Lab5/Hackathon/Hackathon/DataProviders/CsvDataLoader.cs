@@ -4,13 +4,23 @@ namespace Hackathon.DataProviders;
 
 public class CsvDataLoader(IConfiguration configuration) : IDataLoadingInterface
 {
+    private List<Junior>? juniors;
+    private List<TeamLead>? teamleads;
     public List<Junior> LoadJuniors()
     {
-        return CsvReader.ReadCsv<Junior>(configuration["JuniorsPath"]!);
+        if (juniors is null)
+        {
+            juniors = CsvReader.ReadCsv<Junior>(configuration["JuniorsPath"]!);
+        }
+        return juniors!;
     }
 
     public List<TeamLead> LoadTeamLeads()
     {
-        return CsvReader.ReadCsv<TeamLead>(configuration["TeamLeadsPath"]!);
+        if (teamleads is null)
+        {
+            teamleads = CsvReader.ReadCsv<TeamLead>(configuration["TeamLeadsPath"]!);
+        }
+        return teamleads!;
     }
 }

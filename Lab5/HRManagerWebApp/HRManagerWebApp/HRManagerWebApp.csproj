@@ -10,9 +10,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Hackathon\Hackathon\Hackathon.csproj" />
+      <ProjectReference Include="..\..\MassTransitMessages\MassTransitMessages\MassTransitMessages.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="MassTransit" Version="8.3.0-develop.2078" />
+      <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.0-develop.2078" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
