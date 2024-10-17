@@ -16,7 +16,7 @@ public class Program
         builder.Services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlite(builder.Configuration["DATABASE_CONNECTION_STRING"]),
             ServiceLifetime.Singleton);
-        builder.Services.AddTransient<IDataSavingInterface, SQLiteDataSaver>();
+        builder.Services.AddTransient<IDataSavingInterface, DataSaver>();
         var app = builder.Build();
         app.MapPost("/", async (context) =>
         {

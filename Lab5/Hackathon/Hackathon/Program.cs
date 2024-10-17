@@ -30,10 +30,10 @@ namespace Hackathon
                     services.AddTransient<Hackathon>();
                     services.AddTransient<HackathonWorker>();
                     services.AddDbContextFactory<ApplicationContext>(options => options.UseSqlite(connectionString));
-                    services.AddTransient<IDataLoadingInterface, SQLiteDataLoader>();
-                    services.AddTransient<IDatabaseLoadingInterface, SQLiteDataLoader>();
-                    services.AddTransient<IDataSavingInterface, SQLiteDataSaver>();
-                    services.AddTransient<IDataInitializationInterface, SQLiteDataInitializator>();
+                    services.AddTransient<IDataLoadingInterface, DataLoader>();
+                    services.AddTransient<IDatabaseLoadingInterface, DataLoader>();
+                    services.AddTransient<IDataSavingInterface, DataSaver>();
+                    services.AddTransient<IDataInitializationInterface, DataInitializator>();
                     services.AddTransient<ITeamBuildingStrategy, TeamBuildingStrategy>();
                     services.AddTransient<IWishListGenerator, RandomWishlistGenerator>();
                 })

@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Hackathon.DataProviders;
 
-public class SQLiteDataInitializator(ApplicationContext context, IConfiguration configuration)
+public class DataInitializator(ApplicationContext context, IConfiguration configuration)
     : IDataInitializationInterface
 {
     public void InitializeDatabase()

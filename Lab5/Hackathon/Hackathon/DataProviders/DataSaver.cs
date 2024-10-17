@@ -2,7 +2,7 @@
 
 namespace Hackathon.DataProviders;
 
-public class SQLiteDataSaver(ApplicationContext context) : IDataSavingInterface
+public class DataSaver(ApplicationContext context) : IDataSavingInterface
 {
     public void SaveData(List<Junior> juniors, List<TeamLead> teamLeads, List<Team> teams, Hackathon hackathon)
     {
@@ -19,32 +19,30 @@ public class SQLiteDataSaver(ApplicationContext context) : IDataSavingInterface
 
     private void SaveJuniors(List<Junior> juniors)
     {
-        for (int i = 0; i < juniors.Count; i++)
+        foreach (var junior in juniors)
         {
-            if (context.Juniors.Any(j => j.JuniorId == juniors[i].JuniorId))
+            if (context.Juniors.Any(j => j.Id == junior.Id))
             {
-                var id = context.Juniors.FirstOrDefault(j => j.JuniorId == juniors[i].JuniorId)!.Id;
-                juniors[i] = new Junior(juniors[i].JuniorId, juniors[i].Name, id, juniors[i].Wishlist);
+                context.Juniors.Attach(junior);
             }
             else
             {
-                context.Juniors.Add(juniors[i]);
+                context.Juniors.Add(junior);
             }
         }
     }
 
     private void SaveTeamLeads(List<TeamLead> teamLeads)
     {
-        for (int i = 0; i < teamLeads.Count; i++)
+        foreach (var teamLead in teamLeads)
         {
-            if (context.Teamleads.Any(t => t.TeamLeadId == teamLeads[i].TeamLeadId))
+            if (context.Teamleads.Any(t => t.Id == teamLead.Id))
             {
-                var id = context.Teamleads.FirstOrDefault(t => t.TeamLeadId == teamLeads[i].TeamLeadId)!.Id;
-                teamLeads[i] = new TeamLead(teamLeads[i].TeamLeadId, teamLeads[i].Name, id, teamLeads[i].Wishlist);
+                context.Teamleads.Attach(teamLead);
             }
             else
             {
-                context.Teamleads.Add(teamLeads[i]);
+                context.Teamleads.Add(teamLead);
             }
         }
     }
@@ -104,53 +102,32 @@ public class SQLiteDataSaver(ApplicationContext context) : IDataSavingInterface
             wishlists.Add(teamLead.Wishlist);
         }
 
-        for (int i = 0; i < wishlists.Count; i++)
+        foreach (var wishlist in wishlists)
         {
-            if (context.WishLists.Any(w => w.Id == wishlists[i].Id))
+            if (context.WishLists.Any(w => w.Id == wishlist.Id))
             {
-                wishlists[i] = context.WishLists.FirstOrDefault(w => w.Id == wishlists[i].Id)!;
+                context.WishLists.Attach(wishlist);
             }
             else
             {
-                context.WishLists.Add(wishlists[i]);
+                context.WishLists.Add(wishlist);
             }
         }
     }
 
     private void SaveWishes(List<Junior> juniors, List<TeamLead> teamLeads)
     {
-        var wishesList = new List<Wish>();
         foreach (var junior in juniors)
         {
-            junior.Wishlist.InitWishlist();
-            var wishlist = junior.Wishlist.GetEmployee();
-            foreach (var employee in wishlist)
-            {
-                var teamLead = teamLeads.FirstOrDefault(t => t.TeamLeadId == employee.TeamLeadId);
-                if (teamLead != null)
-                {
-                    wishesList.Add(new Wish(junior.Wishlist.GetScore(employee), junior.Wishlist.Id, junior.Id,
-                        teamLead.Id));
-                }
-            }
+            junior.Wishlist.InitWishes(junior.Id);
+            SaveWishesList(junior.Wishlist.Wishes);
         }
 
         foreach (var teamLead in teamLeads)
         {
-            teamLead.Wishlist.InitWishlist();
-            var wishlist = teamLead.Wishlist.GetEmployee();
-            foreach (var employee in wishlist)
-            {
-                var junior = juniors.FirstOrDefault(j => j.JuniorId == employee.JuniorId);
-                if (junior != null)
-                {
-                    wishesList.Add(new Wish(teamLead.Wishlist.GetScore(employee), teamLead.Wishlist.Id, teamLead.Id,
-                        junior.Id));
-                }
-            }
+            teamLead.Wishlist.InitWishes(teamLead.Id);
+            SaveWishesList(teamLead.Wishlist.Wishes);
         }
-
-        SaveWishesList(wishesList);
     }
 
     private void SaveWishesList(List<Wish> wishes)
@@ -165,19 +142,6 @@ public class SQLiteDataSaver(ApplicationContext context) : IDataSavingInterface
             {
                 context.Wishes.Add(wish);
             }
-        }
-    }
-
-    private void UpdateEmployees(List<Junior> juniors, List<TeamLead> teamLeads)
-    {
-        for (int i = 0; i < juniors.Count; i++)
-        {
-            juniors[i] = context.Juniors.FirstOrDefault(j => j.JuniorId == juniors[i].JuniorId)!;
-        }
-
-        for (int i = 0; i < teamLeads.Count; i++)
-        {
-            teamLeads[i] = context.Teamleads.FirstOrDefault(t => t.TeamLeadId == teamLeads[i].TeamLeadId)!;
         }
     }
 }

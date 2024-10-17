@@ -3,7 +3,7 @@ using Hackathon.Database.SQLite;
 
 namespace Hackathon.DataProviders;
 
-public class SQLiteDataLoader(ApplicationContext context) : IDataLoadingInterface, IDatabaseLoadingInterface
+public class DataLoader(ApplicationContext context) : IDataLoadingInterface, IDatabaseLoadingInterface
 {
     public List<Junior> LoadJuniors()
     {
@@ -15,46 +15,35 @@ public class SQLiteDataLoader(ApplicationContext context) : IDataLoadingInterfac
         return context.Teamleads.ToList();
     }
 
-    public bool LoadHackathon(int id, out List<Employee> employees, out List<Team> teams, out double harmonicMean)
+    public HackathonDto? LoadHackathon(int id)
     {
         var hackathon = context.Hackathons.FirstOrDefault(h => h.Id == id);
-        teams = new List<Team>();
-        employees = new List<Employee>();
-        harmonicMean = 0;
+        var teams = new List<Team>();
+        var juniors = new List<Junior>();
+        var teamleads = new List<TeamLead>();
+        var harmonicMean = 0.0;
         if (hackathon != null)
         {
             harmonicMean = hackathon.HarmonicMean;
             var teamsQuery = context.Teams.Where(t => t.HackathonId == hackathon.Id);
             teams = teamsQuery.ToList();
-            var gay = context.Teams;
-            foreach (var junior in gay)
-            {
-                Console.WriteLine(junior.HackathonId.ToString() +"\t" + junior.Id + "\t" + junior.JuniorId);
-            }
-            
-            var juniors = teamsQuery
+            var juniorsDict = teamsQuery
                 .Join(context.Juniors, team => team.JuniorId, junior => junior.Id,
-                    (team, junior) => new { junior });
-            foreach (var junior in juniors)
-            {
-                Console.WriteLine(junior);
-            }
-            var juniorsDict = juniors.ToDictionary(x => x.junior.Id, x => x.junior);
+                    (team, junior) => new { junior }).ToDictionary(x => x.junior.Id, x => x.junior);
             var teamLeadsDict = teamsQuery
                 .Join(context.Teamleads, team => team.TeamLeadId, teamLead => teamLead.Id,
                     (team, teamLead) => new { teamLead }).ToDictionary(x => x.teamLead.Id, x => x.teamLead);
-            employees.AddRange(juniorsDict.Values);
-            employees.AddRange(teamLeadsDict.Values);
+            juniors.AddRange(juniorsDict.Values);
+            teamleads.AddRange(teamLeadsDict.Values);
             foreach (var team in teamsQuery)
             {
                 team.Junior = juniorsDict[team.JuniorId];
                 team.TeamLead = teamLeadsDict[team.TeamLeadId];
             }
 
-            return true;
+            return new HackathonDto(){Id = id, HarmonicMean = harmonicMean, Juniors = juniors, TeamLeads = teamleads, Teams = teams};
         }
-
-        return false;
+        return null;
     }
 
     public double? LoadArithmeticMean()

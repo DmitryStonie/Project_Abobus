@@ -1,6 +1,5 @@
 ﻿using Hackathon.Database.SQLite;
 using Hackathon.DataProviders;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
@@ -73,9 +72,14 @@ public class ConsoleApplication(
             case 2:
                 Console.WriteLine("Enter hackathon id: ");
                 int id = Convert.ToInt32(Console.ReadLine());
-                if (databaseLoader.LoadHackathon(id, out var employees, out var teams, out var harmonicMean))
+                var hackathonDto = databaseLoader.LoadHackathon(id);
+                if (hackathonDto != null)
                 {
-                    PrintHackathon(id, employees, teams, harmonicMean);
+                    PrintHackathon(id, hackathonDto);
+                }
+                else
+                {
+                    Console.WriteLine("Hackathon not found");
                 }
 
                 break;
@@ -90,26 +94,24 @@ public class ConsoleApplication(
         }
     }
 
-    private void PrintHackathon(in int id, in List<Employee>? participants, in List<Team>? teams,
-        in double harmonicMean)
+    private void PrintHackathon(in int id, HackathonDto hackathonDto)
     {
-        if (participants is null || teams is null)
+        Console.WriteLine($"Hackathon Id: {id}\nHackathon harmonic mean: {hackathonDto.HarmonicMean}\nHackathon teams:");
+        foreach (var team in hackathonDto.Teams)
         {
-            Console.WriteLine("Hackathon not found");
+            Console.WriteLine($"Team id: {team.Id}\t Junior: {team.Junior}\t TeamLead: {team.TeamLead}");
         }
-        else
-        {
-            Console.WriteLine($"Hackathon Id: {id}\nHackathon harmonic mean: {harmonicMean}\nHackathon teams:");
-            foreach (var team in teams)
-            {
-                Console.WriteLine($"Team id: {team.Id}\t Junior: {team.Junior}\t TeamLead: {team.TeamLead}");
-            }
 
-            Console.WriteLine("hackathon participants:");
-            foreach (var participant in participants)
-            {
-                Console.WriteLine(participant);
-            }
+        Console.WriteLine("hackathon participants");
+        Console.WriteLine("juniors");
+        foreach (var participant in hackathonDto.Juniors)
+        {
+            Console.WriteLine(participant);
+        }
+        Console.WriteLine("teamleads");
+        foreach (var participant in hackathonDto.TeamLeads)
+        {
+            Console.WriteLine(participant);
         }
     }
 

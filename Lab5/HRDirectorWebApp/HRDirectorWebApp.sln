@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRDirectorWebApp", "HRDirec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "..\Hackathon\Hackathon\Hackathon.csproj", "{C6C7768E-AB09-425C-80E8-09A92CBEBAAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRDirectorWebApp.Tests", "HRDirectorWebApp.Tests\HRDirectorWebApp.Tests.csproj", "{EBC37297-76DC-4775-BD25-CB662AFAACBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{C6C7768E-AB09-425C-80E8-09A92CBEBAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6C7768E-AB09-425C-80E8-09A92CBEBAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6C7768E-AB09-425C-80E8-09A92CBEBAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBC37297-76DC-4775-BD25-CB662AFAACBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBC37297-76DC-4775-BD25-CB662AFAACBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBC37297-76DC-4775-BD25-CB662AFAACBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBC37297-76DC-4775-BD25-CB662AFAACBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

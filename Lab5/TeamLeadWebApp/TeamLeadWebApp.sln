@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamLeadWebApp", "TeamLeadW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "..\Hackathon\Hackathon\Hackathon.csproj", "{46116FAF-E382-409D-B2DD-7D3FB7A38B65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamLeadWebApp.Tests", "TeamLeadWebApp.Tests\TeamLeadWebApp.Tests.csproj", "{B2CDF7D8-3F70-4F6F-9C7D-EEA20D468F70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{46116FAF-E382-409D-B2DD-7D3FB7A38B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46116FAF-E382-409D-B2DD-7D3FB7A38B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46116FAF-E382-409D-B2DD-7D3FB7A38B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2CDF7D8-3F70-4F6F-9C7D-EEA20D468F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2CDF7D8-3F70-4F6F-9C7D-EEA20D468F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2CDF7D8-3F70-4F6F-9C7D-EEA20D468F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2CDF7D8-3F70-4F6F-9C7D-EEA20D468F70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

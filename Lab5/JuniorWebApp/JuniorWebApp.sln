@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuniorWebApp", "JuniorWebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "..\Hackathon\Hackathon\Hackathon.csproj", "{A2D520DF-79EF-4DED-B70F-D32B58F153D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuniorWebApp.Tests", "JuniorWebApp.Tests\JuniorWebApp.Tests.csproj", "{CA3191D4-99A6-4EDC-9D81-1042C32F3F01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{A2D520DF-79EF-4DED-B70F-D32B58F153D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2D520DF-79EF-4DED-B70F-D32B58F153D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2D520DF-79EF-4DED-B70F-D32B58F153D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA3191D4-99A6-4EDC-9D81-1042C32F3F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA3191D4-99A6-4EDC-9D81-1042C32F3F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA3191D4-99A6-4EDC-9D81-1042C32F3F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA3191D4-99A6-4EDC-9D81-1042C32F3F01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
