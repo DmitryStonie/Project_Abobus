@@ -12,8 +12,9 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Configuration.AddJsonFile("appsettings.json");
+        builder.Configuration.AddEnvironmentVariables();
         builder.Services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")),
+                options.UseSqlite(builder.Configuration["DATABASE_CONNECTION_STRING"]),
             ServiceLifetime.Singleton);
         builder.Services.AddTransient<IDataSavingInterface, SQLiteDataSaver>();
         var app = builder.Build();

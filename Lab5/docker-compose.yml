@@ -6,7 +6,9 @@
       dockerfile: HRDirectorWebApp/HRDirectorWebApp/Dockerfile
     ports:
       - "8002:8080"
-
+    environment:
+      DATABASE_CONNECTION_STRING: "Data Source=hackathon.db"
+      
   hrmanagerwebapp:
     image: hrmanagerwebapp
     build:
