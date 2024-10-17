@@ -10,7 +10,7 @@ public class JuniorService(
     IConfiguration configuration,
     IDataLoadingInterface dataLoader,
     IWishListGenerator wishlistGenerator,
-    ILogger<JuniorService> logger) : IHostedService
+    ILogger<JuniorService> logger, HttpClient httpClient) : IHostedService
 {
     private bool _running = true;
 
@@ -39,12 +39,11 @@ public class JuniorService(
         logger.LogInformation("Started");
         while (_running && !wishlistLoaded)
         {
-            using HttpClient client = new HttpClient();
             try
             {
                 var json = JsonConvert.SerializeObject(junior);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = client.PostAsync(configuration["HR_MANAGER_IP"] + "/juniors", content);
+                var response = httpClient.PostAsync(configuration["HR_MANAGER_IP"] + "/juniors", content);
                 if (response.Result.IsSuccessStatusCode)
                 {
                     logger.LogInformation("Wishlist successfully loaded!");

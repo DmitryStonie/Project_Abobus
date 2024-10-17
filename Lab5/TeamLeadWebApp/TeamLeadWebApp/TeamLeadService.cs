@@ -10,7 +10,7 @@ public class TeamLeadService(
     IConfiguration configuration,
     IDataLoadingInterface dataLoader,
     IWishListGenerator wishlistGenerator,
-    ILogger<TeamLeadService> logger) : IHostedService
+    ILogger<TeamLeadService> logger, HttpClient httpClient) : IHostedService
 {
     private bool _running = true;
 
@@ -38,12 +38,11 @@ public class TeamLeadService(
         bool wishlistLoaded = false;
         while (_running && !wishlistLoaded)
         {
-            using HttpClient client = new HttpClient();
             try
             {
                 var json = JsonConvert.SerializeObject(teamLead);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = client.PostAsync(configuration["HR_MANAGER_IP"] + "/teamleads", content);
+                var response = httpClient.PostAsync(configuration["HR_MANAGER_IP"] + "/teamleads", content);
                 if (response.Result.IsSuccessStatusCode)
                 {
                     logger.LogInformation("Wishlist successfully loaded!");
