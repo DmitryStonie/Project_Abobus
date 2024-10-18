@@ -9,48 +9,42 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
         SaveHackathon(hackathon);
         SaveJuniors(juniors);
         SaveTeamLeads(teamLeads);
-        Console.WriteLine("Employees before saving");
-        juniors.ForEach(j => Console.WriteLine(j.ToString()));
-        teamLeads.ForEach(j => Console.WriteLine(j.ToString()));
         context.SaveChanges();
-        Console.WriteLine("Employees after saving");
-        juniors.ForEach(j => Console.WriteLine(j.ToString()));
-        teamLeads.ForEach(j => Console.WriteLine(j.ToString()));
         SaveTeams(teams, juniors, teamLeads, hackathon.Id);
         SaveWishLists(juniors, teamLeads, hackathon.Id);
-        teams.ForEach(j => Console.WriteLine($"teamlead {j.TeamLeadId} junior {j.JuniorId} teamid {j.Id} hackathonid{j.HackathonId}"));
         context.SaveChanges();
-        teams.ForEach(j => Console.WriteLine($"teamlead {j.TeamLeadId} junior {j.JuniorId} teamid {j.Id} hackathonid{j.HackathonId}"));
         SaveWishes(juniors, teamLeads);
         context.SaveChanges();
     }
 
     private void SaveJuniors(List<Junior> juniors)
     {
-        foreach (var junior in juniors)
+        for (int i = 0; i < juniors.Count; i++)
         {
-            if (context.Juniors.Any(j => j.Id == junior.Id))
+            if (context.Juniors.Any(j => j.JuniorId == juniors[i].JuniorId))
             {
-                context.Juniors.Attach(junior);
+                var id = context.Juniors.FirstOrDefault(j => j.JuniorId == juniors[i].JuniorId)!.Id;
+                juniors[i] = new Junior(juniors[i].JuniorId, juniors[i].Name, id, juniors[i].Wishlist);
             }
             else
             {
-                context.Juniors.Add(junior);
+                context.Juniors.Add(juniors[i]);
             }
         }
     }
 
     private void SaveTeamLeads(List<TeamLead> teamLeads)
     {
-        foreach (var teamLead in teamLeads)
+        for (int i = 0; i < teamLeads.Count; i++)
         {
-            if (context.Teamleads.Any(t => t.Id == teamLead.Id))
+            if (context.Teamleads.Any(t => t.TeamLeadId == teamLeads[i].TeamLeadId))
             {
-                context.Teamleads.Attach(teamLead);
+                var id = context.Teamleads.FirstOrDefault(t => t.TeamLeadId == teamLeads[i].TeamLeadId)!.Id;
+                teamLeads[i] = new TeamLead(teamLeads[i].TeamLeadId, teamLeads[i].Name, id, teamLeads[i].Wishlist);
             }
             else
             {
-                context.Teamleads.Add(teamLead);
+                context.Teamleads.Add(teamLeads[i]);
             }
         }
     }
@@ -109,44 +103,60 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
             teamLead.Wishlist.OwnerId = teamLead.Id;
             wishlists.Add(teamLead.Wishlist);
         }
-        Console.WriteLine("Wishlists before saving");
-        wishlists.ForEach(w => Console.WriteLine($"owner {w.OwnerId} hackathon {w.HackathonId} wishlist id {w.Id}"));
-        foreach (var wishlist in wishlists)
+
+        for (int i = 0; i < wishlists.Count; i++)
         {
-            if (context.WishLists.Any(w => w.Id == wishlist.Id))
+            if (context.WishLists.Any(w => w.Id == wishlists[i].Id))
             {
-                context.WishLists.Attach(wishlist);
+                wishlists[i] = context.WishLists.FirstOrDefault(w => w.Id == wishlists[i].Id)!;
             }
             else
             {
-                context.WishLists.Add(wishlist);
+                context.WishLists.Add(wishlists[i]);
             }
         }
     }
 
     private void SaveWishes(List<Junior> juniors, List<TeamLead> teamLeads)
     {
-        Console.WriteLine("Wishes before saving");
+        var wishesList = new List<Wish>();
         foreach (var junior in juniors)
         {
-            junior.Wishlist.InitWishes(junior.Id);
-            junior.Wishlist.Wishes.ForEach(w => Console.WriteLine($"owner {w.OwnerId} partner {w.PartnerId} wishlist id {w.Id}"));
-            
-            SaveWishesList(junior.Wishlist.Wishes);
+            junior.Wishlist.InitWishlist();
+            var wishlist = junior.Wishlist.GetEmployee();
+            foreach (var employee in wishlist)
+            {
+                var teamLead = teamLeads.FirstOrDefault(t => t.TeamLeadId == employee.TeamLeadId);
+                if (teamLead != null)
+                {
+                    wishesList.Add(new Wish(junior.Wishlist.GetScore(employee), junior.Wishlist.Id, junior.Id,
+                        teamLead.Id));
+                }
+            }
         }
 
         foreach (var teamLead in teamLeads)
         {
-            teamLead.Wishlist.InitWishes(teamLead.Id);
-            SaveWishesList(teamLead.Wishlist.Wishes);
+            teamLead.Wishlist.InitWishlist();
+            var wishlist = teamLead.Wishlist.GetEmployee();
+            foreach (var employee in wishlist)
+            {
+                var junior = juniors.FirstOrDefault(j => j.JuniorId == employee.JuniorId);
+                if (junior != null)
+                {
+                    wishesList.Add(new Wish(teamLead.Wishlist.GetScore(employee), teamLead.Wishlist.Id, teamLead.Id,
+                        junior.Id));
+                }
+            }
         }
+
+        SaveWishesList(wishesList);
     }
 
     private void SaveWishesList(List<Wish> wishes)
     {
         foreach (var wish in wishes)
         {
-            Console.WriteLine($"{wish.Id}  {wish.OwnerId}  {wish.PartnerId}  {wish.Score}  {wish.WishlistId}");
             if (context.Wishes.Any(w => w.Id == wish.Id))
             {
                 context.Wishes.Attach(wish);
@@ -155,6 +165,19 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
             {
                 context.Wishes.Add(wish);
             }
+        }
+    }
+
+    private void UpdateEmployees(List<Junior> juniors, List<TeamLead> teamLeads)
+    {
+        for (int i = 0; i < juniors.Count; i++)
+        {
+            juniors[i] = context.Juniors.FirstOrDefault(j => j.JuniorId == juniors[i].JuniorId)!;
+        }
+
+        for (int i = 0; i < teamLeads.Count; i++)
+        {
+            teamLeads[i] = context.Teamleads.FirstOrDefault(t => t.TeamLeadId == teamLeads[i].TeamLeadId)!;
         }
     }
 }
