@@ -14,7 +14,7 @@ public class DatabaseTests
     {
         //Arrange
         var context = createContext();
-        var dataSaver = new SQLiteDataSaver(context);
+        var dataSaver = new DataSaver(context);
         var hackathon = new Hackathon(HarmonicMean, HackathonId);
         InitTestData(out var juniors, out var teamLeads, out var teams, HackathonId);
         //Act and Assert
@@ -26,7 +26,7 @@ public class DatabaseTests
     {
         //Arrange
         var context = createContext();
-        var dataSaver = new SQLiteDataSaver(context);
+        var dataSaver = new DataSaver(context);
         var hackathon = new Hackathon(HarmonicMean, HackathonId);
         InitTestData(out var juniors, out var teamLeads, out var teams, HackathonId);
         //Act and Assert
@@ -40,8 +40,8 @@ public class DatabaseTests
     {
         //Assert
         var context = createContext();
-        var dataSaver = new SQLiteDataSaver(context);
-        var dataLoader = new SQLiteDataLoader(context);
+        var dataSaver = new DataSaver(context);
+        var dataLoader = new DataLoader(context);
         const double harmonic = 10;
         const int hackathonId = 100;
         var hackathon = new Hackathon(harmonic, hackathonId);

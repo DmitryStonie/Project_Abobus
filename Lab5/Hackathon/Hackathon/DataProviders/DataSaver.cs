@@ -9,10 +9,18 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
         SaveHackathon(hackathon);
         SaveJuniors(juniors);
         SaveTeamLeads(teamLeads);
+        Console.WriteLine("Employees before saving");
+        juniors.ForEach(j => Console.WriteLine(j.ToString()));
+        teamLeads.ForEach(j => Console.WriteLine(j.ToString()));
         context.SaveChanges();
+        Console.WriteLine("Employees after saving");
+        juniors.ForEach(j => Console.WriteLine(j.ToString()));
+        teamLeads.ForEach(j => Console.WriteLine(j.ToString()));
         SaveTeams(teams, juniors, teamLeads, hackathon.Id);
         SaveWishLists(juniors, teamLeads, hackathon.Id);
+        teams.ForEach(j => Console.WriteLine($"teamlead {j.TeamLeadId} junior {j.JuniorId} teamid {j.Id} hackathonid{j.HackathonId}"));
         context.SaveChanges();
+        teams.ForEach(j => Console.WriteLine($"teamlead {j.TeamLeadId} junior {j.JuniorId} teamid {j.Id} hackathonid{j.HackathonId}"));
         SaveWishes(juniors, teamLeads);
         context.SaveChanges();
     }
@@ -101,7 +109,8 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
             teamLead.Wishlist.OwnerId = teamLead.Id;
             wishlists.Add(teamLead.Wishlist);
         }
-
+        Console.WriteLine("Wishlists before saving");
+        wishlists.ForEach(w => Console.WriteLine($"owner {w.OwnerId} hackathon {w.HackathonId} wishlist id {w.Id}"));
         foreach (var wishlist in wishlists)
         {
             if (context.WishLists.Any(w => w.Id == wishlist.Id))
@@ -117,9 +126,12 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
 
     private void SaveWishes(List<Junior> juniors, List<TeamLead> teamLeads)
     {
+        Console.WriteLine("Wishes before saving");
         foreach (var junior in juniors)
         {
             junior.Wishlist.InitWishes(junior.Id);
+            junior.Wishlist.Wishes.ForEach(w => Console.WriteLine($"owner {w.OwnerId} partner {w.PartnerId} wishlist id {w.Id}"));
+            
             SaveWishesList(junior.Wishlist.Wishes);
         }
 
@@ -134,6 +146,7 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
     {
         foreach (var wish in wishes)
         {
+            Console.WriteLine($"{wish.Id}  {wish.OwnerId}  {wish.PartnerId}  {wish.Score}  {wish.WishlistId}");
             if (context.Wishes.Any(w => w.Id == wish.Id))
             {
                 context.Wishes.Attach(wish);

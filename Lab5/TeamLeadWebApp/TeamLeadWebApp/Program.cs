@@ -20,7 +20,8 @@ public class Program
                 configuration.AddEnvironmentVariables();
             }).ConfigureServices((context, services) =>
             {
-                services.AddHttpClient<TeamLeadService>();
+                services.AddHttpClient();
+                services.AddHostedService<TeamLeadService>();
                 services.AddTransient<IDataLoadingInterface, CsvDataLoader>();
                 services.AddTransient<IWishListGenerator, RandomWishlistGenerator>();
             })

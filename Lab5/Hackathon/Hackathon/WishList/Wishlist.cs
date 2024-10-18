@@ -68,9 +68,17 @@ public class Wishlist
 
     public void InitWishes(int ownerId)
     {
+        Console.WriteLine($"wishlist of {ownerId}");
         Wishes = new List<Wish>();
+        Console.WriteLine("Wishlists dictionary");
+        foreach (var data in _wishlistDictionary)
+        {
+            Console.WriteLine($"key {data.Key} - value {data.Value}");
+        }
+        Console.WriteLine($"Init wishes for {ownerId}");
         foreach (var wish in _wishlistDictionary)
         {
+            Console.WriteLine($"score {wish.Value} {wish.Key.Id}");
             Wishes.Add(new Wish(wish.Value, Id, ownerId, wish.Key.Id));
         }
     }

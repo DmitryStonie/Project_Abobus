@@ -42,7 +42,7 @@ public class TeamLeadService(
             {
                 var json = JsonConvert.SerializeObject(teamLead);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = httpClient.PostAsync(configuration["HR_MANAGER_IP"] + "/teamleads", content);
+                var response = httpClient.PostAsync(configuration["HR_MANAGER_IP"], content);
                 if (response.Result.IsSuccessStatusCode)
                 {
                     logger.LogInformation("Wishlist successfully loaded!");
