@@ -59,7 +59,7 @@ public class TeamLeadService(
             catch (AggregateException ex)
             {
                 logger.LogError($"Got connection exception: {ex.Message}");
-                Thread.Sleep(2000);
+                Task.Delay(2000);
             }
             catch (Exception ex)
             {
