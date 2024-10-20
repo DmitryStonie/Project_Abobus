@@ -1,5 +1,8 @@
 using System.Text;
 using Hackathon;
+using Hackathon.Database.SQLite;
+using Hackathon.DataProviders;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace HRManagerWebApp;
@@ -19,7 +22,12 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.Configuration.AddJsonFile("appsettings.json");
         builder.Configuration.AddEnvironmentVariables();
-        builder.Services.AddSingleton<ITeamBuildingStrategy, TeamBuildingStrategy>();
+        builder.Services.AddDbContext<HrManagerApplicationContext>(options =>
+                options.UseSqlite(builder.Configuration["DATABASE_CONNECTION_STRING"]),
+            ServiceLifetime.Singleton);
+        builder.Services.AddTransient<ITeamBuildingStrategy, TeamBuildingStrategy>();
+        builder.Services.AddTransient<IDataSavingInterface, HrManagerDataSaver>();
+        builder.Services.AddTransient<IDatabaseLoadingInterface, HrManagerDataLoader>();
         builder.Services.AddSingleton<HRManager>();
         builder.Services.AddSingleton<TeamsSender>();
         builder.Services.AddSingleton<JsonBodyReader>();

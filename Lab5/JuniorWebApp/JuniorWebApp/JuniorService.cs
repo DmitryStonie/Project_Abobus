@@ -26,15 +26,23 @@ public class JuniorService(
         var junior = new Junior();
         try
         {
-            junior = new Junior(Int32.Parse(configuration["ID"]!), configuration["NAME"]);
             teamLeads = dataLoader.LoadTeamLeads();
+            teamLeads.ForEach(t => t.Id = t.TeamLeadId);
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Failed to load team leads");
         }
+        var Wishlist = new Wishlist(wishlistGenerator.CreateWishlist(teamLeads));
+        Wishlist.InitWishlistById(junior.JuniorId);
+        junior = new Junior(Int32.Parse(configuration["ID"]!), configuration["NAME"], Int32.Parse(configuration["ID"]!), Wishlist);
 
-        junior.Wishlist = new Wishlist(wishlistGenerator.CreateWishlist(teamLeads));
+        
+        foreach (var wish in junior.Wishlist.Wishes)
+        {
+            Console.WriteLine($"{wish.OwnerId}  {wish.PartnerId}  {wish.WishlistId} {wish.Score}");
+
+        }
         bool wishlistLoaded = false;
         logger.LogInformation($"Junior {junior.JuniorId}Started");
         while (_running && !wishlistLoaded)

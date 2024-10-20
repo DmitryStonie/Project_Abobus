@@ -26,15 +26,22 @@ public class TeamLeadService(
         var teamLead = new TeamLead();
         try
         {
-            teamLead = new TeamLead(Int32.Parse(configuration["ID"]!), configuration["NAME"]);
             juniors = dataLoader.LoadJuniors();
+            juniors.ForEach(t => t.Id = t.JuniorId);
+
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Failed to load juniors");
         }
+        var Wishlist = new Wishlist(wishlistGenerator.CreateWishlist(juniors));
+        Wishlist.InitWishlistById(teamLead.TeamLeadId);
+        teamLead = new TeamLead(Int32.Parse(configuration["ID"]!), configuration["NAME"], Int32.Parse(configuration["ID"]!), Wishlist);
+        foreach (var wish in teamLead.Wishlist.Wishes)
+        {
+            Console.WriteLine($"{wish.OwnerId}  {wish.PartnerId}  {wish.WishlistId} {wish.Score}");
 
-        teamLead.Wishlist = new Wishlist(wishlistGenerator.CreateWishlist(juniors));
+        }
         bool wishlistLoaded = false;
         while (_running && !wishlistLoaded)
         {

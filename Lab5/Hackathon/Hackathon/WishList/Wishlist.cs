@@ -5,12 +5,13 @@ namespace Hackathon;
 [DataContract]
 public class Wishlist
 {
-    [DataMember] private List<Employee> _wishlist;
-    private Dictionary<Employee, int> _wishlistDictionary;
+    //private
+    [DataMember] public List<Employee> _wishlist;
+    public Dictionary<Employee, int> _wishlistDictionary;
     private int _candidateIndex;
 
     public List<Wish> Wishes { get; private set; }
-    public int Id { get; init; }
+    public int Id { get; set; }
     public int HackathonId { get; set; }
     public int OwnerId { get; set; }
 
@@ -38,9 +39,16 @@ public class Wishlist
 
     public int GetScore(Employee employee)
     {
-        if (_wishlistDictionary.ContainsKey(employee))
+        Console.WriteLine(employee);
+        foreach (var val in _wishlistDictionary)
         {
-            return _wishlistDictionary[employee];
+            Console.WriteLine($"{val.Key} - {val.Value}");
+        }
+        var value = _wishlistDictionary.FirstOrDefault(e => e.Key.Id == employee.Id); 
+        if (value.Key != null)
+        {
+            Console.WriteLine(value.Key);
+            return _wishlistDictionary[value.Key];
         }
 
         throw new KeyNotFoundException();
@@ -74,11 +82,25 @@ public class Wishlist
             Wishes.Add(new Wish(wish.Value, Id, ownerId, wish.Key.Id));
         }
     }
+    public void InitWishesById(int ownerId)
+    {
+        Wishes = new List<Wish>();
+        foreach (var wish in _wishlistDictionary)
+        {
+            int partnerId = wish.Key.JuniorId == 0 ? wish.Key.TeamLeadId : wish.Key.JuniorId;
+            Wishes.Add(new Wish(wish.Value, Id, ownerId, partnerId));
+        }
+    }
 
     public void InitWishlist()
     {
         _wishlistDictionary = ToDictionary();
         InitWishes(OwnerId);
+    }
+    public void InitWishlistById(int ownerId)
+    {
+        _wishlistDictionary = ToDictionary();
+        InitWishesById(ownerId);
     }
 
     public List<Employee> GetEmployee()

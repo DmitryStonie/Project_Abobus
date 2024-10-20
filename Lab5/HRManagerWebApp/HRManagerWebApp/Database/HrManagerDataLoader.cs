@@ -3,7 +3,7 @@ using Hackathon.Database.SQLite;
 
 namespace Hackathon.DataProviders;
 
-public class DataLoader(ApplicationContext context) : IDataLoadingInterface, IDatabaseLoadingInterface
+public class HrManagerDataLoader(HrManagerApplicationContext context) : IDataLoadingInterface, IDatabaseLoadingInterface
 {
     public List<Junior> LoadJuniors()
     {

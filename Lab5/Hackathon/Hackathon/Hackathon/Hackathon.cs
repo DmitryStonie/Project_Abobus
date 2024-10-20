@@ -18,6 +18,11 @@ namespace Hackathon
         public int Id { get; init; }
         public double HarmonicMean { get; set; }
 
+        public Hackathon()
+        {
+            Id = 0;
+            HarmonicMean = 0.0;
+        }
         public Hackathon(double harmonicMean, int id)
         {
             HarmonicMean = harmonicMean;
@@ -90,6 +95,22 @@ namespace Hackathon
         public void Complete()
         {
             HarmonicMean = _hrDirector.CountHarmonicMean(Teams);
+            foreach (var team in Teams)
+            {
+                team.Id = 0;
+                team.TeamLead.Id = 0;
+                team.Junior.Id = 0;
+                team.Junior.Wishlist.Id = 0;
+                team.TeamLead.Wishlist.Id = 0;
+                foreach (var wish in team.Junior.Wishlist.Wishes)
+                {
+                    wish.Id = 0;
+                }
+                foreach (var wish in team.TeamLead.Wishlist.Wishes)
+                {
+                    wish.Id = 0;
+                }
+            }
             _dataSaver?.SaveData(_juniors, _teamLeads, Teams, this);
         }
     }

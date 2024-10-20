@@ -6,7 +6,7 @@ public class Team
 
     public Junior Junior { get; set; }
 
-    public int Id { get; init; }
+    public int Id { get; set; }
     public int HackathonId { get; set; }
     public int JuniorId { get; set; }
 

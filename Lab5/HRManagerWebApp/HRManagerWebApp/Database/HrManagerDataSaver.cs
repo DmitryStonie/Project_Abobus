@@ -2,7 +2,7 @@
 
 namespace Hackathon.DataProviders;
 
-public class DataSaver(ApplicationContext context) : IDataSavingInterface
+public class HrManagerDataSaver(HrManagerApplicationContext context) : IDataSavingInterface
 {
     
     public void SaveData(List<Junior> juniors, List<TeamLead> teamLeads, List<Team> teams, Hackathon hackathon)
@@ -82,8 +82,8 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
         foreach (var team in teams)
         {
             team.HackathonId = hackathonId;
-            team.JuniorId = juniorDict[team.Junior.JuniorId].Id;
-            team.TeamLeadId = teamLeadDict[team.TeamLead.TeamLeadId].Id;
+            team.JuniorId = juniorDict[team.Junior.JuniorId].JuniorId;
+            team.TeamLeadId = teamLeadDict[team.TeamLead.TeamLeadId].JuniorId;
         }
 
         foreach (var team in teams)
@@ -105,14 +105,14 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
         foreach (var junior in juniors)
         {
             junior.Wishlist.HackathonId = hackathonId;
-            junior.Wishlist.OwnerId = junior.Id;
+            junior.Wishlist.OwnerId = junior.JuniorId;
             wishlists.Add(junior.Wishlist);
         }
 
         foreach (var teamLead in teamLeads)
         {
             teamLead.Wishlist.HackathonId = hackathonId;
-            teamLead.Wishlist.OwnerId = teamLead.Id;
+            teamLead.Wishlist.OwnerId = teamLead.TeamLeadId;
             wishlists.Add(teamLead.Wishlist);
         }
 
@@ -134,30 +134,23 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
         var wishesList = new List<Wish>();
         foreach (var junior in juniors)
         {
-            junior.Wishlist.InitWishlist();
+            junior.Wishlist.InitWishlistById(junior.JuniorId);
             var wishlist = junior.Wishlist.GetEmployee();
-            foreach (var employee in wishlist)
+            foreach (var wish in junior.Wishlist.Wishes)
             {
-                var teamLead = teamLeads.FirstOrDefault(t => t.TeamLeadId == employee.TeamLeadId);
-                if (teamLead != null)
-                {
-                    wishesList.Add(new Wish(junior.Wishlist.GetScore(employee), junior.Wishlist.Id, junior.Id,
-                        teamLead.Id));
-                }
+                    wishesList.Add(wish);
             }
         }
 
         foreach (var teamLead in teamLeads)
         {
-            teamLead.Wishlist.InitWishlist();
+            teamLead.Wishlist.InitWishlistById(teamLead.TeamLeadId);
             var wishlist = teamLead.Wishlist.GetEmployee();
             foreach (var employee in wishlist)
             {
-                var junior = juniors.FirstOrDefault(j => j.JuniorId == employee.JuniorId);
-                if (junior != null)
+                foreach (var wish in teamLead.Wishlist.Wishes)
                 {
-                    wishesList.Add(new Wish(teamLead.Wishlist.GetScore(employee), teamLead.Wishlist.Id, teamLead.Id,
-                        junior.Id));
+                    wishesList.Add(wish);
                 }
             }
         }
@@ -179,17 +172,5 @@ public class DataSaver(ApplicationContext context) : IDataSavingInterface
             }
         }
     }
-
-    private void UpdateEmployees(List<Junior> juniors, List<TeamLead> teamLeads)
-    {
-        for (int i = 0; i < juniors.Count; i++)
-        {
-            juniors[i] = context.Juniors.FirstOrDefault(j => j.JuniorId == juniors[i].JuniorId)!;
-        }
-
-        for (int i = 0; i < teamLeads.Count; i++)
-        {
-            teamLeads[i] = context.Teamleads.FirstOrDefault(t => t.TeamLeadId == teamLeads[i].TeamLeadId)!;
-        }
-    }
+    
 }

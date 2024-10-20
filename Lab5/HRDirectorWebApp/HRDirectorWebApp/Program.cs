@@ -24,8 +24,10 @@ public class Program
         builder.Services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlite(builder.Configuration["DATABASE_CONNECTION_STRING"]),
             ServiceLifetime.Singleton);
-        builder.Services.AddTransient<IDataSavingInterface, DataSaver>();
+        builder.Services.AddSingleton<ReaderWriterLockSlim>();
+        builder.Services.AddSingleton<IDataSavingInterface, DataSaver>();
         builder.Services.AddSingleton<JsonBodyReader>();
+        builder.Services.AddSingleton<ReadedGuids>();
         builder.Services.AddControllers();
         return builder.Build();
     }

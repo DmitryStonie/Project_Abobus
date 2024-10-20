@@ -20,19 +20,21 @@ public class Teamleads(
             var teamLead = JsonConvert.DeserializeObject<TeamLead>(bodyStr);
             if (teamLead != null)
             {
-                Response.StatusCode = 200;
                 if (hrManager.AddTeamLead(teamLead))
                 {
-                    logger.LogInformation(teamLead.ToString());
-                    if (hrManager.GetJuniorsCount() + hrManager.GetTeamleadsCount() ==
-                        Int32.Parse(configuration["EMPLOYEES_COUNT"]!) &&
-                        hrManager.GetJuniorsCount() == hrManager.GetTeamleadsCount())
+                    if (hrManager.IsEmployeesEnough()) 
                     {
-                        var teams = hrManager.CreateTeams();
-                        await teamsSender.SendTeams(teams, configuration["HR_DIRECTOR_IP"]!);
-                        hrManager.ClearEmployees();
+                        logger.LogInformation($"try to make teams and send tl");
+                        var teams = hrManager.GetTeams();
+                        foreach (var team in teams)
+                        {
+                            logger.LogInformation($"{team.Junior}  {team.TeamLead}");
+                        }
+                        await teamsSender.SendTeams(teams, configuration["HR_DIRECTOR_IP"]!, hrManager.guid);
+                        hrManager.Reset();
                     }
                 }
+                Response.StatusCode = 200;
             }
             else
             {

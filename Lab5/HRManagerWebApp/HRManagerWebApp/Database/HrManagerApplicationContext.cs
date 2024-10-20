@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HRManagerWebApp.Controllers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Hackathon.Database.SQLite;
 
-public sealed class ApplicationContext : DbContext
+public sealed class HrManagerApplicationContext : DbContext
 {
-    public DbSet<Employee> Employees => Set<Employee>();
     public DbSet<Junior> Juniors => Set<Junior>();
     public DbSet<TeamLead> Teamleads => Set<TeamLead>();
     public DbSet<Wishlist> WishLists => Set<Wishlist>();
@@ -15,13 +15,14 @@ public sealed class ApplicationContext : DbContext
     public DbSet<Hackathon> Hackathons => Set<Hackathon>();
     public DbSet<Team> Teams => Set<Team>();
 
-    public ApplicationContext() : base()
+    public HrManagerApplicationContext() : base()
     {
     }
 
-    public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+    public HrManagerApplicationContext(DbContextOptions<HrManagerApplicationContext> options) : base(options)
     {
-        Database.Migrate(); 
+        Database.EnsureCreated(); 
+        //Database.Migrate();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -31,7 +32,8 @@ public sealed class ApplicationContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
+        modelBuilder.ApplyConfiguration(new JuniorConfiguration());
+        modelBuilder.ApplyConfiguration(new TeamleadConfiguration());
         modelBuilder.ApplyConfiguration(new HackathonConfiguration());
         modelBuilder.ApplyConfiguration(new WishlistConfiguration());
         modelBuilder.ApplyConfiguration(new WishConfiguration());
@@ -45,41 +47,31 @@ public class HackathonConfiguration : IEntityTypeConfiguration<Hackathon>
     {
         builder.HasKey(h => h.Id);
         builder.Property(h => h.HarmonicMean);
-        builder.HasMany<Team>()
-            .WithOne()
-            .HasForeignKey(t => t.HackathonId);
-        builder.HasMany<Wishlist>()
-            .WithOne()
-            .HasForeignKey(w => w.HackathonId);
         builder.Ignore(h => h.Teams);
     }
 }
 
-public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
+public class JuniorConfiguration : IEntityTypeConfiguration<Junior>
 {
-    public void Configure(EntityTypeBuilder<Employee> builder)
+    public void Configure(EntityTypeBuilder<Junior> builder)
     {
         builder.HasKey(e => e.Id);
         builder.Property(e => e.Name);
         builder.Property(e => e.JuniorId);
-        builder.Property(e => e.TeamLeadId);
-        builder.HasMany<Wishlist>()
-            .WithOne()
-            .HasForeignKey(w => w.OwnerId);
-        builder.HasMany<Wish>()
-            .WithOne()
-            .HasForeignKey(w => w.OwnerId);
-        builder.HasMany<Wish>()
-            .WithOne()
-            .HasForeignKey(w => w.PartnerId);
-        builder.HasMany<Team>()
-            .WithOne()
-            .HasForeignKey(t => t.JuniorId);
-        builder.HasMany<Team>()
-            .WithOne()
-            .HasForeignKey(t => t.TeamLeadId);
         builder.Ignore(e => e.Wishlist);
-        builder.UseTphMappingStrategy();
+        builder.Ignore(e => e.TeamLeadId);
+    }
+}
+public class TeamleadConfiguration : IEntityTypeConfiguration<TeamLead>
+{
+    public void Configure(EntityTypeBuilder<TeamLead> builder)
+    {
+        builder.HasKey(e => e.Id);
+        builder.Property(e => e.Name);
+        builder.Property(e => e.TeamLeadId);
+        builder.Ignore(e => e.Wishlist);
+        builder.Ignore(e => e.JuniorId);
+
     }
 }
 
@@ -90,9 +82,6 @@ public class WishlistConfiguration : IEntityTypeConfiguration<Wishlist>
         builder.HasKey(w => w.Id);
         builder.Property(w => w.HackathonId);
         builder.Property(w => w.OwnerId);
-        builder.HasMany<Wish>()
-            .WithOne()
-            .HasForeignKey(w => w.WishlistId);
         builder.Ignore(w => w.Wishes);
     }
 }

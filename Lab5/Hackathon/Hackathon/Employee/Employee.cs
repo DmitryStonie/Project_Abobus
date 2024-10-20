@@ -4,7 +4,7 @@
     {
         public Wishlist Wishlist { get; set; }
 
-        public int Id { get; init; }
+        public int Id { get; set; }
         public string? Name { get; init; }
         public int TeamLeadId { get; init; }
         public int JuniorId { get; init; }

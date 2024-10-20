@@ -17,6 +17,7 @@
     environment:
       HR_DIRECTOR_IP: "http://hrdirectorwebapp:8080/Teams/Post"
       EMPLOYEES_COUNT: "10"
+      DATABASE_CONNECTION_STRING: "Data Source=hackathon.db"
     ports:
       - "8001:8080"
 

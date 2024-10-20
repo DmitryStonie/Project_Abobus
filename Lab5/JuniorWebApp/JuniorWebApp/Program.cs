@@ -20,7 +20,7 @@ public class Program
                 configuration.AddEnvironmentVariables();
             }).ConfigureServices((context, services) =>
             {
-                services.AddHttpClient();
+                services.AddHttpClient<JuniorService>();
                 services.AddHostedService<JuniorService>();
                 services.AddSingleton<IDataLoadingInterface, CsvDataLoader>(service => new CsvDataLoader(context.Configuration));
                 services.AddTransient<IWishListGenerator, RandomWishlistGenerator>();
@@ -31,4 +31,5 @@ public class Program
                 logging.AddConsole();
             });
     }
+    
 }
