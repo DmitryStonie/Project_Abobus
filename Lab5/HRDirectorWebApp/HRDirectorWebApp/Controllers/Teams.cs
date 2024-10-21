@@ -13,32 +13,38 @@ public class Teams(ILogger<Teams> logger, IDataSavingInterface dataSaver, JsonBo
     {
         var bodyStr = await reader.ReadJsonBody(Request);
         var hackathonTeams = JsonConvert.DeserializeObject<HackathonTeams>(bodyStr);
-        var teams = hackathonTeams.teams;
-        var guid = hackathonTeams.guid;
+        var teams = hackathonTeams?.teams;
+        var guid = hackathonTeams?.guid;
         logger.LogInformation("Got teams");
-        await Response.WriteAsync("Ok");
         if (teams != null)
         {
+            Response.StatusCode = 200;
+            await Response.WriteAsync("Ok");
             foreach (var team in teams)
             {
                 logger.LogInformation("Teamlead: " + team.TeamLead.ToString());
                 logger.LogInformation("Junior: " + team.Junior.ToString());
             }
             readWriteLock.EnterWriteLock();
-            if (readedGuids.guids.Contains(guid))
+            if (readedGuids.guids.Contains(guid!))
             {
                 Console.WriteLine($"Hackathon was registered before");
                 readWriteLock.ExitWriteLock();
             }
             else
             {
-                readedGuids.guids.Add(guid);
+                readedGuids.guids.Add(guid!);
                 var hackathon = new Hackathon.Hackathon(teams, dataSaver);
                 hackathon.Complete();
                 var harmonicMean = hackathon.HarmonicMean;
                 readWriteLock.ExitWriteLock();
                 Console.WriteLine($"Harmonic mean: {harmonicMean}");
             }
+        }
+        else
+        {
+            Response.StatusCode = 400;
+            await Response.WriteAsync("Bad request");
         }
     }
 }
