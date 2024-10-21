@@ -1,4 +1,4 @@
-﻿namespace HRManagerWebApp;
+﻿namespace HRManagerWebApp.Utilites;
 
 public class JsonBodyReader
 {

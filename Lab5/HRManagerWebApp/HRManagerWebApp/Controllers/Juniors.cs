@@ -1,4 +1,5 @@
 ﻿using Hackathon;
+using HRManagerWebApp.Utilites;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -9,15 +10,16 @@ public class Juniors(
     IConfiguration configuration,
     HRManager hrManager,
     TeamsSender teamsSender,
-    JsonBodyReader reader, IHttpClientFactory httpClientFactory) : Controller
+    JsonBodyReader reader) : Controller
 {
-    public async Task Post()
+    public async Task<IResult> Post()
     {
         try
         {
             logger.LogInformation("Get junior request");
             var bodyStr = await reader.ReadJsonBody(Request);
             var junior = JsonConvert.DeserializeObject<Junior>(bodyStr);
+            Console.WriteLine(Request.Host);
             if (junior != null)
             {
                 if (hrManager.AddJunior(junior))
@@ -29,18 +31,15 @@ public class Juniors(
                         hrManager.Reset();
                     }
                 }
-                Response.StatusCode = 200;
-                await Response.WriteAsync("Ok");
-            }
-            else
-            {
-                Response.StatusCode = 400;
-                await Response.WriteAsync("Bad request");
+                Console.WriteLine("Sends ok");
+                return Results.Ok();
             }
         }
         catch (Exception ex)
         {
             logger.LogError(ex.Message);
         }
+        Console.WriteLine("Sends bad request");
+        return Results.BadRequest();
     }
 }

@@ -1,7 +1,7 @@
-﻿using Castle.Core.Configuration;
-using Hackathon.Database.SQLite;
+﻿using Hackathon;
+using Hackathon.DataProviders;
 
-namespace Hackathon.DataProviders;
+namespace HRManagerWebApp.Database;
 
 public class HrManagerDataLoader(HrManagerApplicationContext context) : IDataLoadingInterface, IDatabaseLoadingInterface
 {

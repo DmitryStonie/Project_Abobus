@@ -18,7 +18,7 @@ public class HRManager
     private readonly ITeamBuildingStrategy _teamBuildingStrategy;
     private readonly IDataSavingInterface _dataSaver;
     private readonly IDatabaseLoadingInterface _dataLoader;
-    private readonly ReaderWriterLockSlim _readWriteLock = new ReaderWriterLockSlim();
+    private readonly ReaderWriterLockSlim _readWriteLock = new();
 
     public HRManager(IConfiguration configuration, ITeamBuildingStrategy teamBuildingStrategy,
         IDataSavingInterface dataSaver, IDatabaseLoadingInterface databaseLoadingInterface)
@@ -35,24 +35,23 @@ public class HRManager
     {
         _readWriteLock.EnterWriteLock();
         var hackathonDto = _dataLoader.LoadLastHackathon();
-        Console.WriteLine($"Get hackathon with {hackathonDto?.HarmonicMean}");
         if (hackathonDto == null || hackathonDto.HarmonicMean != 0.0)
         {
+            Console.WriteLine("Null hackathon");
             _hackathon = new Hackathon.Hackathon();
             _juniors = new Dictionary<int, Junior>();
             _teamLeads = new Dictionary<int, TeamLead>();
             _teams = new List<Team>();
-            Console.WriteLine("----------------------------- empty hackathon -------------------------");
         }
         else
         {
+            Console.WriteLine("Existed hackathon");
             _hackathon = new Hackathon.Hackathon(hackathonDto.HarmonicMean, hackathonDto.Id);
             _juniors = hackathonDto.Juniors.Select((s, index) => new { s, index })
                 .ToDictionary(x => x.index, x => x.s);
             _teamLeads = hackathonDto.TeamLeads.Select((s, index) => new { s, index })
                 .ToDictionary(x => x.index, x => x.s);
             _teams = hackathonDto.Teams;
-            Console.WriteLine($"hackathon with {_juniors.Count}  {_teams.Count}");
         }
 
         _readWriteLock.ExitWriteLock();
@@ -60,16 +59,13 @@ public class HRManager
 
     public IEnumerable<Team>? GetTeams()
     {
-        Console.WriteLine("----------------------------------try to get lock on teams-------------------------------");
         _readWriteLock.EnterWriteLock();
-        Console.WriteLine("------------------------------------got lock-----------------------------------");
-        if (TeamsGenerated == true)
+        if (TeamsGenerated)
         {
             _readWriteLock.ExitWriteLock();
             return new List<Team>(_teams);
         }
 
-        Console.WriteLine("Creating...");
         _teams = CreateTeams().ToList();
         TeamsGenerated = true;
         _readWriteLock.ExitWriteLock();
@@ -78,7 +74,6 @@ public class HRManager
 
     private List<Team> CreateTeams()
     {
-        Console.WriteLine("In create teams...");
         var juniorsWishLists = new List<Wishlist>();
         var teamLeadsWishLists = new List<Wishlist>();
         var juniors = new List<Junior>();
@@ -94,22 +89,8 @@ public class HRManager
             teamLeads.Add(teamLead);
             teamLeadsWishLists.Add(teamLead.Wishlist);
         }
-
-        Console.WriteLine("Creating teams...");
-        foreach (var team in _juniors)
-        {
-            Console.WriteLine(team);
-        }
-
-        foreach (var team in _teamLeads)
-        {
-            Console.WriteLine(team);
-        }
-
         var teams = _teamBuildingStrategy.BuildTeams(teamLeads, juniors, teamLeadsWishLists, juniorsWishLists).ToList();
-        Console.WriteLine("Saving teams...");
         _dataSaver.SaveData(_juniors.Values.ToList(), _teamLeads.Values.ToList(), teams, _hackathon);
-        Console.WriteLine("Saved teams...");
         return teams;
     }
 
@@ -122,11 +103,10 @@ public class HRManager
             return false;
         }
 
-        junior.Wishlist.InitWishlistById(junior.JuniorId);
-        _juniors[junior.JuniorId] = junior;
+        var employee = new Junior(junior.JuniorId, junior.Name, junior.Wishlist);
+        employee.Wishlist.InitWishlistById(employee.JuniorId);
+        _juniors[employee.JuniorId] = employee;
         _dataSaver.SaveEmployees(_juniors.Values.ToList(), _teamLeads.Values.ToList(), _hackathon);
-        Console.WriteLine(
-            $"----------------------------------- jun {_juniors.Count} lead {_teamLeads.Count} ----------------------------------");
         _readWriteLock.ExitWriteLock();
         return true;
     }
@@ -140,11 +120,10 @@ public class HRManager
             return false;
         }
 
-        teamLead.Wishlist.InitWishlistById(teamLead.TeamLeadId);
-        _teamLeads[teamLead.TeamLeadId] = teamLead;
+        var employee = new TeamLead(teamLead.TeamLeadId, teamLead.Name, teamLead.Wishlist);
+        employee.Wishlist.InitWishlistById(employee.TeamLeadId);
+        _teamLeads[employee.TeamLeadId] = employee;
         _dataSaver.SaveEmployees(_juniors.Values.ToList(), _teamLeads.Values.ToList(), _hackathon);
-        Console.WriteLine(
-            $"----------------------------------- jun {_juniors.Count} lead {_teamLeads.Count} ----------------------------------");
         _readWriteLock.ExitWriteLock();
         return true;
     }
@@ -152,9 +131,8 @@ public class HRManager
     public bool IsEmployeesEnough()
     {
         _readWriteLock.EnterReadLock();
-        Console.WriteLine($"{_juniors.Count}   {_teamLeads.Count}   {_employeeCount}");
+        Console.WriteLine($"Got {_juniors.Count} jun and {_teamLeads.Count} teamleads");
         bool result = _juniors.Count + _teamLeads.Count == _employeeCount;
-        Console.WriteLine($"{result}");
         _readWriteLock.ExitReadLock();
         return result;
     }

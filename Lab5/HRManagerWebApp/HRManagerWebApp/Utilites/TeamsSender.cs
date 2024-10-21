@@ -2,7 +2,7 @@
 using Hackathon;
 using Newtonsoft.Json;
 
-namespace HRManagerWebApp;
+namespace HRManagerWebApp.Utilites;
 
 public class TeamsSender(ILogger<TeamsSender> logger, IHttpClientFactory httpClientFactory)
 {

@@ -1,11 +1,12 @@
-﻿using Hackathon.Database.SQLite;
+﻿using Hackathon;
+using Hackathon.DataProviders;
 
-namespace Hackathon.DataProviders;
+namespace HRManagerWebApp.Database;
 
 public class HrManagerDataSaver(HrManagerApplicationContext context) : IDataSavingInterface
 {
     
-    public void SaveData(List<Junior> juniors, List<TeamLead> teamLeads, List<Team> teams, Hackathon hackathon)
+    public void SaveData(List<Junior> juniors, List<TeamLead> teamLeads, List<Team> teams, Hackathon.Hackathon hackathon)
     {
         SaveHackathon(hackathon);
         SaveJuniors(juniors);
@@ -17,7 +18,7 @@ public class HrManagerDataSaver(HrManagerApplicationContext context) : IDataSavi
         SaveWishes(juniors, teamLeads);
         context.SaveChangesAsync().Wait();
     }
-    public void SaveEmployees(List<Junior> juniors, List<TeamLead> teamLeads, Hackathon hackathon)
+    public void SaveEmployees(List<Junior> juniors, List<TeamLead> teamLeads, Hackathon.Hackathon hackathon)
     {
         SaveHackathon(hackathon);
         SaveJuniors(juniors);
@@ -61,7 +62,7 @@ public class HrManagerDataSaver(HrManagerApplicationContext context) : IDataSavi
         }
     }
 
-    private void SaveHackathon(Hackathon hackathon)
+    private void SaveHackathon(Hackathon.Hackathon hackathon)
     {
         if (context.Hackathons.Any(t => t.Id == hackathon.Id))
         {

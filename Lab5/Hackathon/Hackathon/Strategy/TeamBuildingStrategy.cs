@@ -33,39 +33,12 @@ public class TeamBuildingStrategy : ITeamBuildingStrategy
     {
         var juniorsWithoutTeam = new List<Employee>(juniors);
         InitOffers(teamLeads, juniorsWithoutTeam);
-        
-        foreach (var teamlead in teamLeads)
-        {
-            Console.WriteLine(teamlead);
-            foreach (var wish in teamlead.Wishlist.Wishes)
-            {
-                Console.WriteLine($"{wish.OwnerId}  {wish.PartnerId}  {wish.WishlistId} {wish.Score}");
-            }
-            foreach (var wish in teamlead.Wishlist._wishlistDictionary)
-            {
-                Console.WriteLine($"{wish.Key}   {wish.Value}");
-            }
-        }
-        foreach (var teamlead in juniors)
-        {
-            Console.WriteLine(teamlead);
-            foreach (var wish in teamlead.Wishlist.Wishes)
-            {
-                Console.WriteLine($"{wish.OwnerId}  {wish.PartnerId}  {wish.WishlistId} {wish.Score}");
-            }
-            foreach (var wish in teamlead.Wishlist._wishlistDictionary)
-            {
-                Console.WriteLine($"{wish.Key}   {wish.Value}");
-            }
-        }
-        
         while (juniorsWithoutTeam.Count > 0)
         {
             var rejectedJuniors = new List<Employee>();
             foreach (var junior in juniorsWithoutTeam)
             {
                 var possibleTeamLead = junior.Wishlist.GetNextCandidate();
-                Console.WriteLine("-------------" + possibleTeamLead?.ToString());
                 if (possibleTeamLead is null)
                 {
                     continue;
@@ -73,23 +46,16 @@ public class TeamBuildingStrategy : ITeamBuildingStrategy
 
                 if (_teamLeadsOffers.ContainsKey(possibleTeamLead.TeamLeadId))
                 {
-                    Console.WriteLine("Contains");
                     possibleTeamLead = teamLeads.FirstOrDefault(teamLead => teamLead.Equals(possibleTeamLead));
                     if (_teamLeadsOffers[possibleTeamLead.TeamLeadId] is null)
                     {
-                        Console.WriteLine("null");
                         _juniorsOffers[junior.JuniorId] = new Candidate(possibleTeamLead, Candidate.DefaultScore);
-                        Console.WriteLine("null 2");
                         var offer = _teamLeadsOffers[possibleTeamLead.TeamLeadId];
-                        Console.WriteLine("null 2.5");
                         var score = possibleTeamLead.GetScore(junior);
-                        Console.WriteLine("null 2.75");
                         _teamLeadsOffers[possibleTeamLead.TeamLeadId] = new Candidate(junior, score);
-                        Console.WriteLine("null 3");
                     }
                     else if (possibleTeamLead.GetScore(junior) > _teamLeadsOffers[possibleTeamLead.TeamLeadId]?.Score)
                     {
-                        Console.WriteLine("not null");
                         _juniorsOffers[_teamLeadsOffers[possibleTeamLead.TeamLeadId]!.Employee.JuniorId] = null;
                         rejectedJuniors.Add(_teamLeadsOffers[possibleTeamLead.TeamLeadId]!.Employee);
                         _juniorsOffers[junior.JuniorId] = new Candidate(possibleTeamLead, Candidate.DefaultScore);
@@ -97,7 +63,6 @@ public class TeamBuildingStrategy : ITeamBuildingStrategy
                     }
                     else
                     {
-                        Console.WriteLine("rejected");
                         rejectedJuniors.Add(junior);
                     }
                 }

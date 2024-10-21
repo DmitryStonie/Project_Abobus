@@ -2,6 +2,8 @@ using System.Text;
 using Hackathon;
 using Hackathon.Database.SQLite;
 using Hackathon.DataProviders;
+using HRManagerWebApp.Database;
+using HRManagerWebApp.Utilites;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 

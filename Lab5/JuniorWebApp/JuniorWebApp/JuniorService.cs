@@ -41,7 +41,7 @@ public class JuniorService(
         junior = new Junior(Int32.Parse(configuration["ID"]!), configuration["NAME"], wishlist);
         bool wishlistLoaded = false;
         logger.LogInformation($"Junior {junior.JuniorId}Started");
-        while (_running && !wishlistLoaded)
+        while (!wishlistLoaded && _running)
         {
             try
             {

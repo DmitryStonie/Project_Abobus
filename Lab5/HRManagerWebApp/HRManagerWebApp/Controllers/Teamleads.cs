@@ -1,4 +1,5 @@
 ﻿using Hackathon;
+using HRManagerWebApp.Utilites;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -11,7 +12,7 @@ public class Teamleads(
     TeamsSender teamsSender,
     JsonBodyReader reader) : Controller
 {
-    public async Task Post()
+    public async Task<IResult> Post()
     {
         try
         {
@@ -22,32 +23,21 @@ public class Teamleads(
             {
                 if (hrManager.AddTeamLead(teamLead))
                 {
-                    if (hrManager.IsEmployeesEnough()) 
+                    if (hrManager.IsEmployeesEnough())
                     {
-                        logger.LogInformation($"try to make teams and send tl");
                         var teams = hrManager.GetTeams();
-                        foreach (var team in teams)
-                        {
-                            logger.LogInformation($"{team.Junior}  {team.TeamLead}");
-                        }
                         await teamsSender.SendTeams(teams, configuration["HR_DIRECTOR_IP"]!, hrManager.guid);
                         hrManager.Reset();
                     }
                 }
-                Response.StatusCode = 200;
-                await Response.WriteAsync("Ok");
 
-            }
-            else
-            {
-                Response.StatusCode = 400;
-                await Response.WriteAsync("Bad request");
-
+                return Results.Ok();
             }
         }
         catch (Exception ex)
         {
             logger.LogError(ex.Message);
         }
+        return Results.BadRequest();
     }
 }

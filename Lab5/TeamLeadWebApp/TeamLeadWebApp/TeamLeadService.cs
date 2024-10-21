@@ -41,7 +41,7 @@ public class TeamLeadService(
         teamLead = new TeamLead(Int32.Parse(configuration["ID"]!), configuration["NAME"], wishlist);
         bool wishlistLoaded = false;
         logger.LogInformation($"Teamlead {teamLead.JuniorId}Started");
-        while (_running && !wishlistLoaded)
+        while (!wishlistLoaded && _running)
         {
             try
             {

@@ -1,10 +1,8 @@
-﻿using HRManagerWebApp.Controllers;
+﻿using Hackathon;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
-namespace Hackathon.Database.SQLite;
+namespace HRManagerWebApp.Database;
 
 public sealed class HrManagerApplicationContext : DbContext
 {
@@ -12,22 +10,22 @@ public sealed class HrManagerApplicationContext : DbContext
     public DbSet<TeamLead> Teamleads => Set<TeamLead>();
     public DbSet<Wishlist> WishLists => Set<Wishlist>();
     public DbSet<Wish> Wishes => Set<Wish>();
-    public DbSet<Hackathon> Hackathons => Set<Hackathon>();
+    public DbSet<Hackathon.Hackathon> Hackathons => Set<Hackathon.Hackathon>();
     public DbSet<Team> Teams => Set<Team>();
 
     public HrManagerApplicationContext() : base()
     {
+        Database.EnsureCreated();
     }
 
     public HrManagerApplicationContext(DbContextOptions<HrManagerApplicationContext> options) : base(options)
     {
-        Database.EnsureCreated(); 
-        //Database.Migrate();
+        Database.EnsureCreated();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.LogTo(Console.WriteLine, LogLevel.Error);
+        //optionsBuilder.LogTo(Console.WriteLine, LogLevel.Error);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,9 +39,9 @@ public sealed class HrManagerApplicationContext : DbContext
     }
 }
 
-public class HackathonConfiguration : IEntityTypeConfiguration<Hackathon>
+public class HackathonConfiguration : IEntityTypeConfiguration<Hackathon.Hackathon>
 {
-    public void Configure(EntityTypeBuilder<Hackathon> builder)
+    public void Configure(EntityTypeBuilder<Hackathon.Hackathon> builder)
     {
         builder.HasKey(h => h.Id);
         builder.Property(h => h.HarmonicMean);

@@ -4,8 +4,6 @@
     build:
       context: .
       dockerfile: HRDirectorWebApp/HRDirectorWebApp/Dockerfile
-    ports:
-      - "8002:8080"
     environment:
       DATABASE_CONNECTION_STRING: "Data Source=hackathon.db"
       
@@ -18,8 +16,6 @@
       HR_DIRECTOR_IP: "http://hrdirectorwebapp:8080/Teams/Post"
       EMPLOYEES_COUNT: "10"
       DATABASE_CONNECTION_STRING: "Data Source=hackathon.db"
-    ports:
-      - "8001:8080"
 
   juniorwebapp-1:
     image: juniorwebapp
@@ -120,3 +116,4 @@
       NAME: "Кузнецов Александр"
       ID: 5
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+

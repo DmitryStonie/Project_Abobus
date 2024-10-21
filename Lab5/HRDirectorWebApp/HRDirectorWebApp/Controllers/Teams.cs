@@ -20,11 +20,7 @@ public class Teams(ILogger<Teams> logger, IDataSavingInterface dataSaver, JsonBo
         {
             Response.StatusCode = 200;
             await Response.WriteAsync("Ok");
-            foreach (var team in teams)
-            {
-                logger.LogInformation("Teamlead: " + team.TeamLead.ToString());
-                logger.LogInformation("Junior: " + team.Junior.ToString());
-            }
+
             readWriteLock.EnterWriteLock();
             if (readedGuids.guids.Contains(guid!))
             {

@@ -5,9 +5,8 @@ namespace Hackathon;
 [DataContract]
 public class Wishlist
 {
-    //private
-    [DataMember] public List<Employee> _wishlist;
-    public Dictionary<Employee, int> _wishlistDictionary;
+    [DataMember] private List<Employee> _wishlist;
+    private Dictionary<Employee, int> _wishlistDictionary;
     private int _candidateIndex;
 
     public List<Wish> Wishes { get; private set; }
@@ -39,15 +38,9 @@ public class Wishlist
 
     public int GetScore(Employee employee)
     {
-        Console.WriteLine(employee);
-        foreach (var val in _wishlistDictionary)
-        {
-            Console.WriteLine($"{val.Key} - {val.Value}");
-        }
         var value = _wishlistDictionary.FirstOrDefault(e => e.Key.Id == employee.Id); 
         if (value.Key != null)
         {
-            Console.WriteLine(value.Key);
             return _wishlistDictionary[value.Key];
         }
 

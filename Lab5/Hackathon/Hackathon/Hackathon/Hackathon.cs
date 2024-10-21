@@ -95,6 +95,7 @@ namespace Hackathon
         public void Complete()
         {
             HarmonicMean = _hrDirector.CountHarmonicMean(Teams);
+            var newTeams = new List<Team>();
             foreach (var team in Teams)
             {
                 team.Id = 0;
