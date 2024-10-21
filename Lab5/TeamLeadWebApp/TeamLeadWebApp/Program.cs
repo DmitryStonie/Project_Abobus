@@ -22,8 +22,9 @@ public class Program
             {
                 services.AddHttpClient();
                 services.AddHostedService<TeamLeadService>();
-                services.AddTransient<IDataLoadingInterface, CsvDataLoader>();
-                services.AddTransient<IWishListGenerator, RandomWishlistGenerator>();
+                services.AddSingleton<IDataLoadingInterface, CsvDataLoader>(service =>
+                    new CsvDataLoader(context.Configuration));
+                services.AddSingleton<IWishListGenerator, RandomWishlistGenerator>();
             })
             .ConfigureLogging(logging =>
             {

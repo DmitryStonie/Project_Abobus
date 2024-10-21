@@ -9,7 +9,7 @@ public class Juniors(
     IConfiguration configuration,
     HRManager hrManager,
     TeamsSender teamsSender,
-    JsonBodyReader reader) : Controller
+    JsonBodyReader reader, IHttpClientFactory httpClientFactory) : Controller
 {
     public async Task Post()
     {
@@ -29,12 +29,13 @@ public class Juniors(
                         hrManager.Reset();
                     }
                 }
-
                 Response.StatusCode = 200;
+                await Response.WriteAsync("Ok");
             }
             else
             {
                 Response.StatusCode = 400;
+                await Response.WriteAsync("Bad request");
             }
         }
         catch (Exception ex)

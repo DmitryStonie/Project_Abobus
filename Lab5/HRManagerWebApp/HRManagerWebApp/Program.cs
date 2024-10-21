@@ -25,6 +25,7 @@ public class Program
         builder.Services.AddDbContext<HrManagerApplicationContext>(options =>
                 options.UseSqlite(builder.Configuration["DATABASE_CONNECTION_STRING"]),
             ServiceLifetime.Singleton);
+        builder.Services.AddHttpClient();
         builder.Services.AddTransient<ITeamBuildingStrategy, TeamBuildingStrategy>();
         builder.Services.AddTransient<IDataSavingInterface, HrManagerDataSaver>();
         builder.Services.AddTransient<IDatabaseLoadingInterface, HrManagerDataLoader>();

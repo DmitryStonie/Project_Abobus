@@ -35,10 +35,14 @@ public class Teamleads(
                     }
                 }
                 Response.StatusCode = 200;
+                await Response.WriteAsync("Ok");
+
             }
             else
             {
                 Response.StatusCode = 400;
+                await Response.WriteAsync("Bad request");
+
             }
         }
         catch (Exception ex)

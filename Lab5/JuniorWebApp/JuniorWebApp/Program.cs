@@ -22,7 +22,8 @@ public class Program
             {
                 services.AddHttpClient<JuniorService>();
                 services.AddHostedService<JuniorService>();
-                services.AddSingleton<IDataLoadingInterface, CsvDataLoader>(service => new CsvDataLoader(context.Configuration));
+                services.AddSingleton<IDataLoadingInterface, CsvDataLoader>(service =>
+                    new CsvDataLoader(context.Configuration));
                 services.AddTransient<IWishListGenerator, RandomWishlistGenerator>();
             })
             .ConfigureLogging(logging =>
@@ -31,5 +32,4 @@ public class Program
                 logging.AddConsole();
             });
     }
-    
 }

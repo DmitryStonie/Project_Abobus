@@ -10,6 +10,10 @@
         {
             TeamLeadId = teamLeadId;
         }
+        public TeamLead(int teamLeadId, string? name, Wishlist wishlist) : base(name, teamLeadId, wishlist)
+        {
+            TeamLeadId = teamLeadId;
+        }
 
         public TeamLead(int teamLeadId, string? name, int id, Wishlist wishlist) : base(name, id, wishlist)
         {

@@ -10,7 +10,8 @@ public class TeamLeadService(
     IConfiguration configuration,
     IDataLoadingInterface dataLoader,
     IWishListGenerator wishlistGenerator,
-    ILogger<TeamLeadService> logger, HttpClient httpClient) : IHostedService
+    ILogger<TeamLeadService> logger,
+    IHttpClientFactory httpClientFactory) : IHostedService
 {
     private bool _running = true;
 
@@ -20,7 +21,7 @@ public class TeamLeadService(
         return Task.CompletedTask;
     }
 
-    public void RunAsync()
+    public async Task RunAsync()
     {
         var juniors = new List<Junior>();
         var teamLead = new TeamLead();
@@ -28,29 +29,26 @@ public class TeamLeadService(
         {
             juniors = dataLoader.LoadJuniors();
             juniors.ForEach(t => t.Id = t.JuniorId);
-
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Failed to load juniors");
+            appLifetime.StopApplication();
         }
-        var Wishlist = new Wishlist(wishlistGenerator.CreateWishlist(juniors));
-        Wishlist.InitWishlistById(teamLead.TeamLeadId);
-        teamLead = new TeamLead(Int32.Parse(configuration["ID"]!), configuration["NAME"], Int32.Parse(configuration["ID"]!), Wishlist);
-        foreach (var wish in teamLead.Wishlist.Wishes)
-        {
-            Console.WriteLine($"{wish.OwnerId}  {wish.PartnerId}  {wish.WishlistId} {wish.Score}");
 
-        }
+        var wishlist = new Wishlist(wishlistGenerator.CreateWishlist(juniors));
+        wishlist.InitWishlistById(teamLead.TeamLeadId);
+        teamLead = new TeamLead(Int32.Parse(configuration["ID"]!), configuration["NAME"], wishlist);
         bool wishlistLoaded = false;
+        logger.LogInformation($"Teamlead {teamLead.JuniorId}Started");
         while (_running && !wishlistLoaded)
         {
             try
             {
                 var json = JsonConvert.SerializeObject(teamLead);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = httpClient.PostAsync(configuration["HR_MANAGER_IP"], content);
-                if (response.Result.IsSuccessStatusCode)
+                var response = await httpClientFactory.CreateClient().PostAsync(configuration["HR_MANAGER_IP"], content);
+                if (response.IsSuccessStatusCode)
                 {
                     logger.LogInformation("Wishlist successfully loaded!");
                     wishlistLoaded = true;
@@ -58,15 +56,13 @@ public class TeamLeadService(
                 }
                 else
                 {
-                    logger.LogInformation($"Got status code {response.Result.StatusCode}");
-                    wishlistLoaded = true;
-                    appLifetime.StopApplication();
+                    logger.LogInformation($"Got status code {response.StatusCode}");
                 }
             }
-            catch (AggregateException ex)
+            catch (HttpRequestException  ex)
             {
                 logger.LogError($"Got connection exception: {ex.Message}");
-                Task.Delay(2000);
+                await Task.Delay(2000);
             }
             catch (Exception ex)
             {

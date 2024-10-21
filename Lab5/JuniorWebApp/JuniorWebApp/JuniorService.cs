@@ -10,7 +10,8 @@ public class JuniorService(
     IConfiguration configuration,
     IDataLoadingInterface dataLoader,
     IWishListGenerator wishlistGenerator,
-    ILogger<JuniorService> logger, IHttpClientFactory httpClientFactory) : IHostedService
+    ILogger<JuniorService> logger,
+    IHttpClientFactory httpClientFactory) : IHostedService
 {
     private bool _running = true;
 
@@ -20,7 +21,7 @@ public class JuniorService(
         return Task.CompletedTask;
     }
 
-    public void RunAsync()
+    public async Task RunAsync()
     {
         var teamLeads = new List<TeamLead>();
         var junior = new Junior();
@@ -32,17 +33,12 @@ public class JuniorService(
         catch (Exception ex)
         {
             logger.LogError(ex, "Failed to load team leads");
+            appLifetime.StopApplication();
         }
-        var Wishlist = new Wishlist(wishlistGenerator.CreateWishlist(teamLeads));
-        Wishlist.InitWishlistById(junior.JuniorId);
-        junior = new Junior(Int32.Parse(configuration["ID"]!), configuration["NAME"], Int32.Parse(configuration["ID"]!), Wishlist);
 
-        
-        foreach (var wish in junior.Wishlist.Wishes)
-        {
-            Console.WriteLine($"{wish.OwnerId}  {wish.PartnerId}  {wish.WishlistId} {wish.Score}");
-
-        }
+        var wishlist = new Wishlist(wishlistGenerator.CreateWishlist(teamLeads));
+        wishlist.InitWishlistById(junior.JuniorId);
+        junior = new Junior(Int32.Parse(configuration["ID"]!), configuration["NAME"], wishlist);
         bool wishlistLoaded = false;
         logger.LogInformation($"Junior {junior.JuniorId}Started");
         while (_running && !wishlistLoaded)
@@ -51,8 +47,8 @@ public class JuniorService(
             {
                 var json = JsonConvert.SerializeObject(junior);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = httpClientFactory.CreateClient().PostAsync(configuration["HR_MANAGER_IP"], content);
-                if (response.Result.IsSuccessStatusCode)
+                var response = await httpClientFactory.CreateClient().PostAsync(configuration["HR_MANAGER_IP"], content);
+                if (response.IsSuccessStatusCode)
                 {
                     logger.LogInformation("Wishlist successfully loaded!");
                     wishlistLoaded = true;
@@ -60,15 +56,13 @@ public class JuniorService(
                 }
                 else
                 {
-                    logger.LogInformation($"Got status code {response.Result.StatusCode}");
-                    wishlistLoaded = true;
-                    appLifetime.StopApplication();
+                    logger.LogInformation($"Got status code {response.StatusCode}");
                 }
             }
-            catch (AggregateException ex)
+            catch (HttpRequestException ex)
             {
                 logger.LogError($"Got connection exception: {ex.Message}");
-                Task.Delay(2000);
+                await Task.Delay(2000);
             }
             catch (Exception ex)
             {
