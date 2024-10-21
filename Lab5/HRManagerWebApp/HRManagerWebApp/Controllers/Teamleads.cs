@@ -12,7 +12,7 @@ public class Teamleads(
     TeamsSender teamsSender,
     JsonBodyReader reader) : Controller
 {
-    public async Task<IResult> Post()
+    public async Task<ActionResult> Post()
     {
         try
         {
@@ -23,21 +23,22 @@ public class Teamleads(
             {
                 if (hrManager.AddTeamLead(teamLead))
                 {
-                    if (hrManager.IsEmployeesEnough())
-                    {
-                        var teams = hrManager.GetTeams();
-                        await teamsSender.SendTeams(teams, configuration["HR_DIRECTOR_IP"]!, hrManager.guid);
-                        hrManager.Reset();
-                    }
+                        if (hrManager.IsEmployeesEnough() && !hrManager.IsTriedToSend())
+                        {
+                            var teams = hrManager.GetTeams();
+                            Console.WriteLine("Try to send");
+                            await teamsSender.SendTeams(teams!, configuration["HR_DIRECTOR_IP"]!, hrManager.guid);
+                            Console.WriteLine("sended");
+                            hrManager.Reset();
+                        }
                 }
-
-                return Results.Ok();
+                return Ok();
             }
         }
         catch (Exception ex)
         {
             logger.LogError(ex.Message);
         }
-        return Results.BadRequest();
+        return BadRequest();
     }
 }

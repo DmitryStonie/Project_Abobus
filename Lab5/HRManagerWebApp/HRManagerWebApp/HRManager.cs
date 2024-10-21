@@ -12,6 +12,7 @@ public class HRManager
     private List<Team>? _teams;
     private readonly int _employeeCount;
 
+    public bool TriedToSend = false;
     public bool TeamsGenerated = false;
     public string guid;
 
@@ -19,6 +20,7 @@ public class HRManager
     private readonly IDataSavingInterface _dataSaver;
     private readonly IDatabaseLoadingInterface _dataLoader;
     private readonly ReaderWriterLockSlim _readWriteLock = new();
+    private readonly object _sendLock = new();
 
     public HRManager(IConfiguration configuration, ITeamBuildingStrategy teamBuildingStrategy,
         IDataSavingInterface dataSaver, IDatabaseLoadingInterface databaseLoadingInterface)
@@ -130,19 +132,30 @@ public class HRManager
 
     public bool IsEmployeesEnough()
     {
-        _readWriteLock.EnterReadLock();
-        Console.WriteLine($"Got {_juniors.Count} jun and {_teamLeads.Count} teamleads");
+        _readWriteLock.EnterWriteLock();
+        Console.WriteLine($"Got {_juniors.Count} jun and {_teamLeads.Count} teamleads {TriedToSend}");
         bool result = _juniors.Count + _teamLeads.Count == _employeeCount;
-        _readWriteLock.ExitReadLock();
+        _readWriteLock.ExitWriteLock();
         return result;
+    }
+
+    public bool IsTriedToSend()
+    {
+        _readWriteLock.EnterWriteLock();
+        if (TriedToSend)
+        {
+            _readWriteLock.ExitWriteLock();
+            return true;
+        }
+        TriedToSend = true;
+        _readWriteLock.ExitWriteLock();
+        return false;
     }
 
     public void Reset()
     {
-        _readWriteLock.EnterWriteLock();
-        _hackathon.Complete();
-        _readWriteLock.ExitWriteLock();
         guid = Guid.NewGuid().ToString();
+        TriedToSend = false;
         InitData();
     }
 }

@@ -12,7 +12,7 @@ public class Juniors(
     TeamsSender teamsSender,
     JsonBodyReader reader) : Controller
 {
-    public async Task<IResult> Post()
+    public async Task<ActionResult> Post()
     {
         try
         {
@@ -24,15 +24,17 @@ public class Juniors(
             {
                 if (hrManager.AddJunior(junior))
                 {
-                    if (hrManager.IsEmployeesEnough())
-                    {
-                        var teams = hrManager.GetTeams();
-                        await teamsSender.SendTeams(teams!, configuration["HR_DIRECTOR_IP"]!, hrManager.guid);
-                        hrManager.Reset();
-                    }
+                        if (hrManager.IsEmployeesEnough() && !hrManager.IsTriedToSend())
+                        {
+                            var teams = hrManager.GetTeams();
+                            Console.WriteLine("Try to send");
+                            await teamsSender.SendTeams(teams!, configuration["HR_DIRECTOR_IP"]!, hrManager.guid);
+                            Console.WriteLine("Sent");
+                            hrManager.Reset();
+                        }
                 }
                 Console.WriteLine("Sends ok");
-                return Results.Ok();
+                return Ok();
             }
         }
         catch (Exception ex)
@@ -40,6 +42,6 @@ public class Juniors(
             logger.LogError(ex.Message);
         }
         Console.WriteLine("Sends bad request");
-        return Results.BadRequest();
+        return BadRequest();
     }
 }
