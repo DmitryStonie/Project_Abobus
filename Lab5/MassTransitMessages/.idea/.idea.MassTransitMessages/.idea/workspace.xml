@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fe09acae-fefe-4d01-a4d5-a00911c6d679" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/HackathonInvitationWorker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/MassTransit/Consumers/GetWishlistConsumer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/Worker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/IRabbitMQPublisher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/MassTransit/Consumers/SubmitHackathonConsumer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/MassTransit/Messages/HackathonStarted.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/MassTransit/Messages/WishlistSended.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/MassTransitHostedService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/RabbitMQPublisher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MassTransitMessages/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MassTransitMessages/Messages/HackathonStarted.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MassTransitMessages/Messages/TeamsSended.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MassTransitMessages/Messages/WishlistSended.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/HRDirectorWebApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/HRDirectorWebApp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/Debug/net8.0/HRDirectorWebApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/Debug/net8.0/HRDirectorWebApp.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/Debug/net8.0/HRDirectorWebApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/Debug/net8.0/HRDirectorWebApp.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/Debug/net8.0/HRDirectorWebApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/Debug/net8.0/HRDirectorWebApp.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/Debug/net8.0/HRDirectorWebApp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/Debug/net8.0/HRDirectorWebApp.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/HRDirectorWebApp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/HRDirectorWebApp.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../HRDirectorWebApp/HRDirectorWebApp/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRManagerWebApp/HRManagerWebApp/obj/Debug/net8.0/HRManagerWebApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HRManagerWebApp/HRManagerWebApp/obj/Debug/net8.0/HRManagerWebApp.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRManagerWebApp/HRManagerWebApp/obj/Debug/net8.0/HRManagerWebApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../HRManagerWebApp/HRManagerWebApp/obj/Debug/net8.0/HRManagerWebApp.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HRManagerWebApp/HRManagerWebApp/obj/Debug/net8.0/HRManagerWebApp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../HRManagerWebApp/HRManagerWebApp/obj/Debug/net8.0/HRManagerWebApp.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/.idea/.idea.Hackathon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/.idea/.idea.Hackathon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon.Test/bin/Debug/net8.0/CoverletSourceRootsMapping_Hackathon.Test" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon.Test/bin/Debug/net8.0/CoverletSourceRootsMapping_Hackathon.Test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon.Test/obj/Debug/net8.0/Hackathon.Test.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/DataProviders/CsvDataLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/DataProviders/CsvDataLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/Employee/HrDirector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/Employee/HrDirector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/bin/Debug/net8.0/Hackathon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/bin/Debug/net8.0/Hackathon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/bin/Debug/net8.0/Hackathon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/bin/Debug/net8.0/Hackathon.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/Hackathon.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/ref/Hackathon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/ref/Hackathon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/refint/Hackathon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/Debug/net8.0/refint/Hackathon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Hackathon/Hackathon/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/JuniorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/JuniorService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/JuniorWebApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/JuniorWebApp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/Debug/net8.0/JuniorWebApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/Debug/net8.0/JuniorWebApp.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/Debug/net8.0/JuniorWebApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/Debug/net8.0/JuniorWebApp.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/Debug/net8.0/JuniorWebApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/Debug/net8.0/JuniorWebApp.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/Debug/net8.0/JuniorWebApp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/Debug/net8.0/JuniorWebApp.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/JuniorWebApp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/JuniorWebApp.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../JuniorWebApp/JuniorWebApp/obj/rider.project.restore.info" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2nVI03VGPTJRNTYwg7iFrCQiOR7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "lab6",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fe09acae-fefe-4d01-a4d5-a00911c6d679" name="Changes" comment="" />
+      <created>1729051589615</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729051589615</updated>
+      <workItem from="1729051590764" duration="417000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
