@@ -1,5 +1,6 @@
 using Hackathon;
 using Hackathon.DataProviders;
+using MassTransit;
 
 namespace JuniorsWebApp;
 
@@ -25,6 +26,19 @@ public class Program
                 services.AddSingleton<IDataLoadingInterface, CsvDataLoader>(service =>
                     new CsvDataLoader(context.Configuration));
                 services.AddTransient<IWishListGenerator, RandomWishlistGenerator>();
+                services.AddMassTransit(x =>
+                {
+                    x.AddConsumer<SubmitHackathonConsumer>();
+                    x.UsingRabbitMq((context, cfg) =>
+                    {
+                        cfg.Host("localhost", "/", h =>
+                        {
+                            h.Username("guest");
+                            h.Password("guest");
+                        });
+                        cfg.ConfigureEndpoints(context);
+                    });
+                });
             })
             .ConfigureLogging(logging =>
             {

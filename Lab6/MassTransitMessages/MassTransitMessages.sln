@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransitMessages", "MassTransitMessages\MassTransitMessages.csproj", "{8ED024A3-7E23-41A6-B5D5-1F863CB083C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransitMessages", "MassTransitMessages\MassTransitMessages.csproj", "{167EBC62-7C07-4B0A-A28C-E5D30A3FA336}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "..\Hackathon\Hackathon\Hackathon.csproj", "{BA9D0C7E-BEF9-4BDB-816B-6676A027E9E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "..\Hackathon\Hackathon\Hackathon.csproj", "{2B6D5CD8-DA7B-48B3-8D20-21BA792FF232}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,13 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8ED024A3-7E23-41A6-B5D5-1F863CB083C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ED024A3-7E23-41A6-B5D5-1F863CB083C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ED024A3-7E23-41A6-B5D5-1F863CB083C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8ED024A3-7E23-41A6-B5D5-1F863CB083C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA9D0C7E-BEF9-4BDB-816B-6676A027E9E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA9D0C7E-BEF9-4BDB-816B-6676A027E9E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA9D0C7E-BEF9-4BDB-816B-6676A027E9E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA9D0C7E-BEF9-4BDB-816B-6676A027E9E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{167EBC62-7C07-4B0A-A28C-E5D30A3FA336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{167EBC62-7C07-4B0A-A28C-E5D30A3FA336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{167EBC62-7C07-4B0A-A28C-E5D30A3FA336}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{167EBC62-7C07-4B0A-A28C-E5D30A3FA336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B6D5CD8-DA7B-48B3-8D20-21BA792FF232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B6D5CD8-DA7B-48B3-8D20-21BA792FF232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B6D5CD8-DA7B-48B3-8D20-21BA792FF232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B6D5CD8-DA7B-48B3-8D20-21BA792FF232}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
