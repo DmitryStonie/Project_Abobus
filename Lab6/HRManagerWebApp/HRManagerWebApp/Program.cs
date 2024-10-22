@@ -2,8 +2,10 @@ using System.Text;
 using Hackathon;
 using Hackathon.Database.SQLite;
 using Hackathon.DataProviders;
+using HRManagerWebApp.Consumers;
 using HRManagerWebApp.Database;
 using HRManagerWebApp.Utilites;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -36,6 +38,21 @@ public class Program
         builder.Services.AddSingleton<JsonBodyReader>();
         builder.Services.AddControllers();
         builder.Services.AddHttpClient();
+        builder.Services.AddMassTransit(x =>
+        {
+            x.AddConsumer<GetJuniorWishlistConsumer>().Endpoint(e => e.Name = builder.Configuration["JUNIORS_QUEUE_NAME"]);
+            x.AddConsumer<GetTeamleadWishlistConsumer>().Endpoint(e => e.Name = builder.Configuration["TEAMLEADS_QUEUE_NAME"]);
+            x.AddConsumer<SubmitHackathonConsumer>().Endpoint(e => e.Name = builder.Configuration["HACKATHONS_QUEUE_NAME"]);
+            x.UsingRabbitMq((context, cfg) =>
+            {
+                cfg.Host("localhost", "/", h =>
+                {
+                    h.Username("guest");
+                    h.Password("guest");
+                });
+                cfg.ConfigureEndpoints(context);
+            });
+        });
         builder.Logging.ClearProviders();
         builder.Logging.AddConsole();
         return builder.Build();

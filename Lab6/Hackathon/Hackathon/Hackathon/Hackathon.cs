@@ -28,7 +28,7 @@ namespace Hackathon
             HarmonicMean = harmonicMean;
             Id = id;
         }
-
+    
         public Hackathon(List<Team> teams, IDataSavingInterface dataSaver)
         {
             HarmonicMean = 0;

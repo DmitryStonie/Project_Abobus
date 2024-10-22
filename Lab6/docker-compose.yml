@@ -6,7 +6,11 @@
       dockerfile: HRDirectorWebApp/HRDirectorWebApp/Dockerfile
     environment:
       DATABASE_CONNECTION_STRING: "Data Source=hackathon.db"
-      
+      HACKATHONS_QUEUE_NAME: "hackathons-1"
+      JUNIORS_QUEUE_NAME: "juniors-1"
+      TEAMLEADS_QUEUE_NAME: "teamleads-1"
+      NUMBER_OF_HACKATHONS: "10"
+
   hrmanagerwebapp:
     image: hrmanagerwebapp
     build:
@@ -16,6 +20,9 @@
       HR_DIRECTOR_IP: "http://hrdirectorwebapp:8080/Teams/Post"
       EMPLOYEES_COUNT: "10"
       DATABASE_CONNECTION_STRING: "Data Source=hackathon.db"
+      HACKATHONS_QUEUE_NAME: "hackathons-2"
+      JUNIORS_QUEUE_NAME: "juniors-2"
+      TEAMLEADS_QUEUE_NAME: "teamleads-2"
 
   juniorwebapp-1:
     image: juniorwebapp
@@ -26,6 +33,7 @@
       NAME: "Юдин Адам"
       ID: 1
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-3"
 
   juniorwebapp-2:
     image: juniorwebapp
@@ -36,6 +44,8 @@
       NAME: "Яшина Яна"
       ID: 2
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-4"
+
 
   juniorwebapp-3:
     image: juniorwebapp
@@ -46,6 +56,8 @@
       NAME: "Никитина Вероника"
       ID: 3
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-5"
+
 
   juniorwebapp-4:
     image: juniorwebapp
@@ -56,6 +68,8 @@
       NAME: "Рябинин Александр"
       ID: 4
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-6"
+
 
   juniorwebapp-5:
     image: juniorwebapp
@@ -66,6 +80,8 @@
       NAME: "Ильин Тимофей"
       ID: 5
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-7"
+
   
   teamleadwebapp-1:
     image: teamleadwebapp
@@ -76,6 +92,8 @@
       NAME: "Филиппова Ульяна"
       ID: 1
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-8"
+
 
   teamleadwebapp-2:
     image: teamleadwebapp
@@ -86,6 +104,8 @@
       NAME: "Николаев Григорий"
       ID: 2
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-9"
+
       
   teamleadwebapp-3:
     image: teamleadwebapp
@@ -96,6 +116,8 @@
       NAME: "Андреева Вероника"
       ID: 3
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-10"
+
   
   teamleadwebapp-4:
     image: teamleadwebapp
@@ -106,6 +128,8 @@
       NAME: "Коротков Михаил"
       ID: 4
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-11"
+
       
   teamleadwebapp-5:
     image: teamleadwebapp
@@ -116,4 +140,6 @@
       NAME: "Кузнецов Александр"
       ID: 5
       HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+      HACKATHONS_QUEUE_NAME: "hackathons-12"
+
 

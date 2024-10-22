@@ -11,6 +11,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Hackathon\Hackathon\Hackathon.csproj" />
+      <ProjectReference Include="..\..\MassTransitMessages\MassTransitMessages\MassTransitMessages.csproj" />
     </ItemGroup>
 
     <ItemGroup>

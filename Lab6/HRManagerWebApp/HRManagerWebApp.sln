@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "..\Hackathon\H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagerWebApp.Tests", "HRManagerWebApp.Tests\HRManagerWebApp.Tests.csproj", "{C073D172-87E5-4408-B928-42735E45067F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransitMessages", "..\MassTransitMessages\MassTransitMessages\MassTransitMessages.csproj", "{BE576FFB-6299-45F5-841F-EA9C3F97A4C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{C073D172-87E5-4408-B928-42735E45067F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C073D172-87E5-4408-B928-42735E45067F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C073D172-87E5-4408-B928-42735E45067F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE576FFB-6299-45F5-841F-EA9C3F97A4C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE576FFB-6299-45F5-841F-EA9C3F97A4C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE576FFB-6299-45F5-841F-EA9C3F97A4C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE576FFB-6299-45F5-841F-EA9C3F97A4C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

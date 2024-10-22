@@ -1,5 +1,6 @@
 using Hackathon;
 using Hackathon.DataProviders;
+using JuniorsWebApp.Consumers;
 using MassTransit;
 
 namespace JuniorsWebApp;
@@ -21,14 +22,12 @@ public class Program
                 configuration.AddEnvironmentVariables();
             }).ConfigureServices((context, services) =>
             {
-                services.AddHttpClient();
-                services.AddHostedService<JuniorService>();
                 services.AddSingleton<IDataLoadingInterface, CsvDataLoader>(service =>
                     new CsvDataLoader(context.Configuration));
                 services.AddTransient<IWishListGenerator, RandomWishlistGenerator>();
                 services.AddMassTransit(x =>
                 {
-                    x.AddConsumer<SubmitHackathonConsumer>();
+                    x.AddConsumer<SubmitHackathonConsumer>().Endpoint(e => e.Name = context.Configuration["HACKATHONS_QUEUE_NAME"]);
                     x.UsingRabbitMq((context, cfg) =>
                     {
                         cfg.Host("localhost", "/", h =>

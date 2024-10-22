@@ -1,5 +1,7 @@
 using Hackathon;
 using Hackathon.DataProviders;
+using MassTransit;
+using TeamLeadWebApp.Consumers;
 
 namespace TeamLeadWebApp;
 
@@ -20,11 +22,22 @@ public class Program
                 configuration.AddEnvironmentVariables();
             }).ConfigureServices((context, services) =>
             {
-                services.AddHttpClient();
-                services.AddHostedService<TeamLeadService>();
                 services.AddSingleton<IDataLoadingInterface, CsvDataLoader>(service =>
                     new CsvDataLoader(context.Configuration));
                 services.AddSingleton<IWishListGenerator, RandomWishlistGenerator>();
+                services.AddMassTransit(x =>
+                {
+                    x.AddConsumer<SubmitHackathonConsumer>().Endpoint(e => e.Name = context.Configuration["HACKATHONS_QUEUE_NAME"]);
+                    x.UsingRabbitMq((context, cfg) =>
+                    {
+                        cfg.Host("localhost", "/", h =>
+                        {
+                            h.Username("guest");
+                            h.Password("guest");
+                        });
+                        cfg.ConfigureEndpoints(context);
+                    });
+                });
             })
             .ConfigureLogging(logging =>
             {

@@ -6,11 +6,13 @@ namespace HRManagerWebApp;
 
 public class HRManager
 {
+    
     private Dictionary<int, Junior> _juniors;
     private Dictionary<int, TeamLead> _teamLeads;
     private Hackathon.Hackathon _hackathon;
     private List<Team>? _teams;
     private readonly int _employeeCount;
+    public int _hackathonId { get; set; }
 
     public bool TriedToSend = false;
     public bool TeamsGenerated = false;
@@ -128,6 +130,13 @@ public class HRManager
         _dataSaver.SaveEmployees(_juniors.Values.ToList(), _teamLeads.Values.ToList(), _hackathon);
         _readWriteLock.ExitWriteLock();
         return true;
+    }
+
+    public void SetHackathonId(int hackathonId)
+    {
+        _readWriteLock.EnterWriteLock();
+        _hackathonId = hackathonId;
+        _readWriteLock.ExitWriteLock();
     }
 
     public bool IsEmployeesEnough()
