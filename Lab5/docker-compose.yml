@@ -1,0 +1,119 @@
+﻿services:
+  hrdirectorwebapp:
+    image: hrdirectorwebapp
+    build:
+      context: .
+      dockerfile: HRDirectorWebApp/HRDirectorWebApp/Dockerfile
+    environment:
+      DATABASE_CONNECTION_STRING: "Data Source=hackathon.db"
+      
+  hrmanagerwebapp:
+    image: hrmanagerwebapp
+    build:
+      context: .
+      dockerfile: HRManagerWebApp/HRManagerWebApp/Dockerfile
+    environment:
+      HR_DIRECTOR_IP: "http://hrdirectorwebapp:8080/Teams/Post"
+      EMPLOYEES_COUNT: "10"
+      DATABASE_CONNECTION_STRING: "Data Source=hackathon.db"
+
+  juniorwebapp-1:
+    image: juniorwebapp
+    build:
+      context: .
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
+    environment:
+      NAME: "Юдин Адам"
+      ID: 1
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+
+  juniorwebapp-2:
+    image: juniorwebapp
+    build:
+      context: .
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
+    environment:
+      NAME: "Яшина Яна"
+      ID: 2
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+
+  juniorwebapp-3:
+    image: juniorwebapp
+    build:
+      context: .
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
+    environment:
+      NAME: "Никитина Вероника"
+      ID: 3
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+
+  juniorwebapp-4:
+    image: juniorwebapp
+    build:
+      context: .
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
+    environment:
+      NAME: "Рябинин Александр"
+      ID: 4
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+
+  juniorwebapp-5:
+    image: juniorwebapp
+    build:
+      context: .
+      dockerfile: JuniorWebApp/JuniorWebApp/Dockerfile
+    environment:
+      NAME: "Ильин Тимофей"
+      ID: 5
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Juniors/Post"
+  
+  teamleadwebapp-1:
+    image: teamleadwebapp
+    build:
+      context: .
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
+    environment:
+      NAME: "Филиппова Ульяна"
+      ID: 1
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+
+  teamleadwebapp-2:
+    image: teamleadwebapp
+    build:
+      context: .
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
+    environment:
+      NAME: "Николаев Григорий"
+      ID: 2
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+      
+  teamleadwebapp-3:
+    image: teamleadwebapp
+    build:
+      context: .
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
+    environment:
+      NAME: "Андреева Вероника"
+      ID: 3
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+  
+  teamleadwebapp-4:
+    image: teamleadwebapp
+    build:
+      context: .
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
+    environment:
+      NAME: "Коротков Михаил"
+      ID: 4
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+      
+  teamleadwebapp-5:
+    image: teamleadwebapp
+    build:
+      context: .
+      dockerfile: TeamLeadWebApp/TeamLeadWebApp/Dockerfile
+    environment:
+      NAME: "Кузнецов Александр"
+      ID: 5
+      HR_MANAGER_IP: "http://hrmanagerwebapp:8080/Teamleads/Post"
+

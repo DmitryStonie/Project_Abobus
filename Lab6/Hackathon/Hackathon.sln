@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "Hackathon\Hackathon.csproj", "{5F926980-1285-4B9B-BAAF-CDF23E1806E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Test", "Hackathon.Test\Hackathon.Test.csproj", "{C968B30C-123A-4E10-9480-3228346AE7A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Test", "Hackathon.Test\Hackathon.Test.csproj", "{6B3C321C-E7FC-40A2-B833-CF6A16F22E1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{5F926980-1285-4B9B-BAAF-CDF23E1806E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F926980-1285-4B9B-BAAF-CDF23E1806E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F926980-1285-4B9B-BAAF-CDF23E1806E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C968B30C-123A-4E10-9480-3228346AE7A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C968B30C-123A-4E10-9480-3228346AE7A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C968B30C-123A-4E10-9480-3228346AE7A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C968B30C-123A-4E10-9480-3228346AE7A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B3C321C-E7FC-40A2-B833-CF6A16F22E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3C321C-E7FC-40A2-B833-CF6A16F22E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3C321C-E7FC-40A2-B833-CF6A16F22E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3C321C-E7FC-40A2-B833-CF6A16F22E1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
