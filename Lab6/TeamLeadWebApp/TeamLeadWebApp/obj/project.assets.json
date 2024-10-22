@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\TeamLeadWebApp\\TeamLeadWebApp\\TeamLeadWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab6\\TeamLeadWebApp\\TeamLeadWebApp\\TeamLeadWebApp.csproj",
       "projectName": "TeamLeadWebApp",
-      "projectPath": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\TeamLeadWebApp\\TeamLeadWebApp\\TeamLeadWebApp.csproj",
+      "projectPath": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab6\\TeamLeadWebApp\\TeamLeadWebApp\\TeamLeadWebApp.csproj",
       "packagesPath": "C:\\Users\\Dmitry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab5\\TeamLeadWebApp\\TeamLeadWebApp\\obj\\",
+      "outputPath": "C:\\Users\\Dmitry\\RiderProjects\\HackathonLabs\\Lab6\\TeamLeadWebApp\\TeamLeadWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dmitry\\AppData\\Roaming\\NuGet\\NuGet.Config"
