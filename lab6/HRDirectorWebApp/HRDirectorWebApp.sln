@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRDirectorWebApp", "HRDirectorWebApp\HRDirectorWebApp.csproj", "{45E7C1F5-1EDF-41AB-82DC-995B1E884F43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "..\Hackathon\Hackathon\Hackathon.csproj", "{C6C7768E-AB09-425C-80E8-09A92CBEBAAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransitMessages", "..\MassTransitMessages\MassTransitMessages\MassTransitMessages.csproj", "{B7752D7D-2763-4B80-B7A0-76786B9CBAF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45E7C1F5-1EDF-41AB-82DC-995B1E884F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E7C1F5-1EDF-41AB-82DC-995B1E884F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E7C1F5-1EDF-41AB-82DC-995B1E884F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E7C1F5-1EDF-41AB-82DC-995B1E884F43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C7768E-AB09-425C-80E8-09A92CBEBAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C7768E-AB09-425C-80E8-09A92CBEBAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C7768E-AB09-425C-80E8-09A92CBEBAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C7768E-AB09-425C-80E8-09A92CBEBAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7752D7D-2763-4B80-B7A0-76786B9CBAF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7752D7D-2763-4B80-B7A0-76786B9CBAF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7752D7D-2763-4B80-B7A0-76786B9CBAF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7752D7D-2763-4B80-B7A0-76786B9CBAF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
